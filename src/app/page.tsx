@@ -435,6 +435,7 @@ export default function QuizPage() {
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [isSaving, setIsSaving] = useState(false);
+  const [studioTier, setStudioTier] = useState<"standard" | "premium" | "vip">("premium");
 
   const question = allQuestions[currentQuestion];
   const totalQuestions = allQuestions.length;
@@ -565,7 +566,7 @@ export default function QuizPage() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://www.skool.com/authenticallyou/about"
-                className="font-sans text-xs md:text-sm text-[#6B6B6B] hover:text-[#C9A86C] transition-colors"
+                className="font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Join the Community
               </a>
@@ -624,7 +625,7 @@ export default function QuizPage() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://www.skool.com/authenticallyou/about"
-                className="font-sans text-xs md:text-sm text-[#6B6B6B] hover:text-[#C9A86C] transition-colors"
+                className="font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Join the Community
               </a>
@@ -730,7 +731,7 @@ export default function QuizPage() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://www.skool.com/authenticallyou/about"
-                className="font-sans text-xs md:text-sm text-[#6B6B6B] hover:text-[#C9A86C] transition-colors"
+                className="font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Join the Community
               </a>
@@ -838,16 +839,18 @@ export default function QuizPage() {
                 {
                   id: "standard",
                   name: "Standard",
-                  price: "Free",
-                  period: "",
+                  price: "$0",
+                  period: "/month",
                   description: "Join the community and start your journey",
                   features: [
-                    "Access to community discussions",
-                    "Weekly group content & prompts",
-                    "Connect with like-minded creators",
-                    "Free resources & guides",
+                    "🎯 Welcome Video Flow (Start Filming Today!)",
+                    "+8 Beginner Friendly Filming Prompts",
+                    "Confidence Foundation Tools + Resources",
+                    "Authentically You Community Love & Vibes!",
+                    "Fearless Fridays (Show Up on Video + Promote Yourself!)",
+                    "Find your Camera Confidence Zone Quiz",
                   ],
-                  cta: "Join Free Community",
+                  cta: "Current Plan",
                   href: "https://www.skool.com/authenticallyou/about",
                   color: "#6B6B6B",
                   bgGradient: "from-[#6B6B6B]/5 to-[#6B6B6B]/0",
@@ -857,14 +860,15 @@ export default function QuizPage() {
                   id: "premium",
                   name: "Premium",
                   price: "$28",
-                  period: "/mo",
+                  period: "/month",
                   description: "Guided support to build your confidence",
                   features: [
-                    "Everything in Standard",
-                    "Monthly group coaching calls",
-                    "Camera confidence workshops",
-                    "Content templates & frameworks",
-                    "Accountability partnerships",
+                    "+100 Weekly Creator Prompts (Ideas to help you film fast) +10 New Prompts Weekly",
+                    "Custom Hollywood GPT to build your video content & scripts",
+                    "Micro BTS Trainings & Mini Courses",
+                    "Behind-the-Scenes: Elfina builds Authentically You alongside a film career",
+                    "Monthly VIP Q&A w/ Elfina",
+                    "In the Studio Season 1 - Behind the Scenes Full Access",
                   ],
                   cta: "Join Premium",
                   href: "https://www.skool.com/authenticallyou/about",
@@ -876,15 +880,15 @@ export default function QuizPage() {
                   id: "vip",
                   name: "VIP",
                   price: "$98",
-                  period: "/mo",
+                  period: "/month",
                   description: "Deep transformation with personal attention",
                   features: [
-                    "Everything in Premium",
-                    "Weekly group coaching",
-                    "Direct feedback on your content",
-                    "Personalized confidence roadmap",
-                    "Priority support & mentorship",
-                    "Exclusive masterclasses",
+                    "🌟 Limited time offer over 67% off (reg $298)",
+                    "Everything in Premium Plus Bonus access to industry pros (makeup, set, editing)",
+                    "288 Confidence Prompts: 1 minute a day, get the prompt, hit record, answer, post, done!",
+                    "Weekly live Q&A to get unstuck with structure, workflow, filming, editing + consistency",
+                    "Create 5 Videos in 5 Days: shorts, YT long-form, VSLs + course videos",
+                    "In the Studio Season 1 Live Calls - Build Your Offer with the Pros",
                   ],
                   cta: "Join VIP",
                   href: "https://www.skool.com/authenticallyou/about",
@@ -895,19 +899,31 @@ export default function QuizPage() {
                 {
                   id: "studio",
                   name: "In the Studio",
-                  price: "$898",
-                  period: "/mo",
-                  description: "1-on-1 with Elfina — for serious creators ready to lead",
-                  features: [
-                    "Everything in VIP",
-                    "Weekly 1-on-1 sessions with Elfina",
-                    "Custom content strategy",
-                    "Brand & presence development",
-                    "Direct access via DM",
-                    "Done-with-you video coaching",
-                    "Business growth integration",
-                  ],
-                  cta: "Apply Now",
+                  price: studioTier === "standard" ? "$888" : studioTier === "premium" ? "$1,288" : "$2,288",
+                  period: "/month",
+                  description: studioTier === "standard"
+                    ? "Full access to all classroom content + call replays. Implement at your own pace."
+                    : studioTier === "premium"
+                    ? "Live cohort with structure, accountability + pro-level guidance."
+                    : "Private 1:1 mentorship with personalized direction + accelerated results.",
+                  features: studioTier === "standard"
+                    ? [
+                        "Full access to all classroom content + call replays",
+                        "Implement at your own pace",
+                      ]
+                    : studioTier === "premium"
+                    ? [
+                        "💥 Live Cohort Starts March 30!",
+                        "Step-by-step guidance: YouTube, personal brand, VSLs, shorts/reels + course content",
+                        "Pro-level scripting, set design, filming, editing + publishing guidance",
+                        "12-Week Live Cohort with structure, accountability + momentum",
+                        "Priority invites to events + guest speaking opportunities",
+                        "Full VIP access to Authentically You programs, weekly calls + community",
+                      ]
+                    : [
+                        "Private 1:1 mentorship w/ Elfina: personalized direction, support + accelerated results",
+                      ],
+                  cta: studioTier === "standard" ? "Join Standard" : studioTier === "premium" ? "Join Premium" : "Join VIP",
                   href: "/apply",
                   color: "#C9A86C",
                   bgGradient: "from-[#C9A86C]/15 to-[#C5B4E3]/10",
@@ -937,6 +953,24 @@ export default function QuizPage() {
                               <Sparkles className="w-3 h-3" />
                               Recommended for You
                             </span>
+                          </div>
+                        )}
+
+                        {tier.id === "studio" && (
+                          <div className="flex items-center gap-1 justify-end mb-2">
+                            {(["standard", "premium", "vip"] as const).map((t) => (
+                              <button
+                                key={t}
+                                onClick={() => setStudioTier(t)}
+                                className={`font-sans text-xs px-3 py-1 rounded-full transition-all ${
+                                  studioTier === t
+                                    ? "bg-[#C9A86C] text-white"
+                                    : "bg-[#C9A86C]/10 text-[#6B6B6B] hover:bg-[#C9A86C]/20"
+                                }`}
+                              >
+                                {t === "standard" ? "Standard" : t === "premium" ? "Premium" : "VIP"}
+                              </button>
+                            ))}
                           </div>
                         )}
 
@@ -1023,7 +1057,7 @@ export default function QuizPage() {
             </span>
             <a
               href="https://www.skool.com/authenticallyou/about"
-              className="hidden md:inline font-sans text-xs md:text-sm text-[#6B6B6B] hover:text-[#C9A86C] transition-colors"
+              className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
             >
               Join the Community
             </a>
