@@ -572,13 +572,13 @@ export default function QuizPage() {
             </span>
             <nav className="flex items-center gap-3 md:gap-5">
               <a
-                href="https://www.skool.com/authenticallyou/about"
+                href="https://www.skool.com/authenticallyou/about" target="_blank" rel="noopener noreferrer"
                 className="font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Join the Community
               </a>
               <a
-                href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
+                href="https://bts.authenticallyou.ca/insiders-all-access-call-form" target="_blank" rel="noopener noreferrer"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -631,13 +631,13 @@ export default function QuizPage() {
             </span>
             <nav className="flex items-center gap-3 md:gap-5">
               <a
-                href="https://www.skool.com/authenticallyou/about"
+                href="https://www.skool.com/authenticallyou/about" target="_blank" rel="noopener noreferrer"
                 className="font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Join the Community
               </a>
               <a
-                href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
+                href="https://bts.authenticallyou.ca/insiders-all-access-call-form" target="_blank" rel="noopener noreferrer"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -737,13 +737,13 @@ export default function QuizPage() {
             </span>
             <nav className="flex items-center gap-3 md:gap-5">
               <a
-                href="https://www.skool.com/authenticallyou/about"
+                href="https://www.skool.com/authenticallyou/about" target="_blank" rel="noopener noreferrer"
                 className="font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Join the Community
               </a>
               <a
-                href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
+                href="https://bts.authenticallyou.ca/insiders-all-access-call-form" target="_blank" rel="noopener noreferrer"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -1005,6 +1005,8 @@ export default function QuizPage() {
 
                         <a
                           href={tier.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className={`block text-center font-sans font-semibold py-3 px-6 rounded-full transition-all mt-auto ${
                             isRecommended
                               ? 'bg-[#C9A86C] text-white hover:bg-[#b8975b] soft-glow'
@@ -1063,13 +1065,13 @@ export default function QuizPage() {
               {currentQuestion + 1} of {totalQuestions}
             </span>
             <a
-              href="https://www.skool.com/authenticallyou/about"
+              href="https://www.skool.com/authenticallyou/about" target="_blank" rel="noopener noreferrer"
               className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
             >
               Join the Community
             </a>
             <a
-              href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
+              href="https://bts.authenticallyou.ca/insiders-all-access-call-form" target="_blank" rel="noopener noreferrer"
               className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
             >
               Apply to Work with Me

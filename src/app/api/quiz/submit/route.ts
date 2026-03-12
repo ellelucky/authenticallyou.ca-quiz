@@ -48,6 +48,38 @@ async function fireGHLWebhook(payload: {
   }
 }
 
+async function fireDiscordNotification(payload: {
+  name: string;
+  email: string;
+  phone: string;
+  zone: string;
+}) {
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+  if (!webhookUrl) return;
+
+  const zoneEmoji: Record<string, string> = {
+    'Starting Zone': '🌱',
+    'Building Zone': '🔨',
+    'Growing Zone': '🌿',
+    'Confident Zone': '✨',
+    'Mastery Zone': '🏆',
+  };
+
+  const emoji = zoneEmoji[payload.zone] || '📋';
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        content: `${emoji} **New Quiz Lead!**\n**Name:** ${payload.name || 'Not provided'}\n**Email:** ${payload.email}\n**Phone:** ${payload.phone || 'Not provided'}\n**Zone:** ${payload.zone}`,
+      }),
+    });
+  } catch (err) {
+    console.error('Discord notification error:', err);
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -71,19 +103,27 @@ export async function POST(request: NextRequest) {
       styleInsights: styleInsights || [],
     });
 
-    // Fire GHL webhook — non-blocking, runs after Supabase save
+    // Fire GHL webhook and Discord notification — non-blocking
     if (email) {
-      await fireGHLWebhook({
-        name: name || '',
-        email,
-        phone: phone || '',
-        zone: results.zone,
-        headline: results.headline,
-        description: results.description,
-        patterns: results.patterns || [],
-        support: results.support,
-        styleInsights: styleInsights || [],
-      });
+      await Promise.all([
+        fireGHLWebhook({
+          name: name || '',
+          email,
+          phone: phone || '',
+          zone: results.zone,
+          headline: results.headline,
+          description: results.description,
+          patterns: results.patterns || [],
+          support: results.support,
+          styleInsights: styleInsights || [],
+        }),
+        fireDiscordNotification({
+          name: name || '',
+          email,
+          phone: phone || '',
+          zone: results.zone,
+        }),
+      ]);
     }
 
     return NextResponse.json({ success: true, id });
