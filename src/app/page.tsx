@@ -277,7 +277,7 @@ const quizData: QuizSection[] = [
       {
         id: 25,
         question: "How do you prefer to get unstuck?",
-        options: ["Give me resources", "Some guidance + feedback", "Someone alongside me", "Personalized mentorship"],
+        options: ["Give me resources", "Some guidance + feedback", "Learning in a group", "Personalized mentorship"],
         category: "primary",
       },
       {
