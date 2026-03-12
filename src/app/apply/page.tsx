@@ -212,7 +212,7 @@ export default function ApplyPage() {
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <a
               href="/"
-              className="font-script text-2xl md:text-3xl text-[#3D3D3D]"
+              className="font-script text-4xl md:text-6xl text-[#3D3D3D]"
             >
               Authentically You
             </a>
@@ -1275,7 +1275,7 @@ export default function ApplyPage() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a
             href="/"
-            className="font-script text-2xl md:text-3xl text-[#3D3D3D]"
+            className="font-script text-4xl md:text-6xl text-[#3D3D3D]"
           >
             Authentically You
           </a>

@@ -560,7 +560,7 @@ export default function QuizPage() {
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#FFF8F0]/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <span className="font-script text-2xl md:text-3xl text-[#3D3D3D]">
+            <span className="font-script text-4xl md:text-6xl text-[#3D3D3D]">
               Authentically You
             </span>
             <nav className="flex items-center gap-3 md:gap-5">
@@ -571,7 +571,7 @@ export default function QuizPage() {
                 Join the Community
               </a>
               <a
-                href="/apply"
+                href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -619,7 +619,7 @@ export default function QuizPage() {
 
         <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#FFF8F0]/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <span className="font-script text-2xl md:text-3xl text-[#3D3D3D]">
+            <span className="font-script text-4xl md:text-6xl text-[#3D3D3D]">
               Authentically You
             </span>
             <nav className="flex items-center gap-3 md:gap-5">
@@ -630,7 +630,7 @@ export default function QuizPage() {
                 Join the Community
               </a>
               <a
-                href="/apply"
+                href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -725,7 +725,7 @@ export default function QuizPage() {
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#FFF8F0]/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <span className="font-script text-2xl md:text-3xl text-[#3D3D3D]">
+            <span className="font-script text-4xl md:text-6xl text-[#3D3D3D]">
               Authentically You
             </span>
             <nav className="flex items-center gap-3 md:gap-5">
@@ -736,7 +736,7 @@ export default function QuizPage() {
                 Join the Community
               </a>
               <a
-                href="/apply"
+                href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -871,7 +871,7 @@ export default function QuizPage() {
                     "In the Studio Season 1 - Behind the Scenes Full Access",
                   ],
                   cta: "Join Premium",
-                  href: "https://www.skool.com/authenticallyou/about",
+                  href: "https://www.skool.com/authenticallyou/plans",
                   color: "#C9A86C",
                   bgGradient: "from-[#C9A86C]/10 to-[#C9A86C]/0",
                   borderColor: "border-[#C9A86C]/30",
@@ -891,7 +891,7 @@ export default function QuizPage() {
                     "In the Studio Season 1 Live Calls - Build Your Offer with the Pros",
                   ],
                   cta: "Join VIP",
-                  href: "https://www.skool.com/authenticallyou/about",
+                  href: "https://www.skool.com/authenticallyou/plans",
                   color: "#C5B4E3",
                   bgGradient: "from-[#C5B4E3]/10 to-[#C5B4E3]/0",
                   borderColor: "border-[#C5B4E3]/30",
@@ -924,7 +924,7 @@ export default function QuizPage() {
                         "Private 1:1 mentorship w/ Elfina: personalized direction, support + accelerated results",
                       ],
                   cta: studioTier === "standard" ? "Join Standard" : studioTier === "premium" ? "Join Premium" : "Join VIP",
-                  href: "/apply",
+                  href: "https://bts.authenticallyou.ca/insiders-all-access-call-form",
                   color: "#C9A86C",
                   bgGradient: "from-[#C9A86C]/15 to-[#C5B4E3]/10",
                   borderColor: "border-[#C9A86C]/40",
@@ -1048,7 +1048,7 @@ export default function QuizPage() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#FFF8F0]/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <span className="font-script text-2xl md:text-3xl text-[#3D3D3D]">
+          <span className="font-script text-4xl md:text-6xl text-[#3D3D3D]">
             Authentically You
           </span>
           <nav className="flex items-center gap-3 md:gap-5">
@@ -1062,7 +1062,7 @@ export default function QuizPage() {
               Join the Community
             </a>
             <a
-              href="/apply"
+              href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
               className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
             >
               Apply to Work with Me

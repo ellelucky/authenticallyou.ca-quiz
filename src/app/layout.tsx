@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Parisienne, Cormorant_Garamond, Space_Grotesk, Inter } from "next/font/google";
+import { Qwitcher_Grypen, Cormorant_Garamond, Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 
-const parisienne = Parisienne({
+const parisienne = Qwitcher_Grypen({
   weight: "400",
   variable: "--font-parisienne",
   subsets: ["latin"],

@@ -125,7 +125,7 @@ export default function AdminLoginPage() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 py-6 px-6">
         <div className="max-w-7xl mx-auto">
-          <Link href="/" className="font-script text-2xl md:text-3xl text-[#3D3D3D] hover:opacity-80 transition-all">
+          <Link href="/" className="font-script text-4xl md:text-6xl text-[#3D3D3D] hover:opacity-80 transition-all">
             Authentically You
           </Link>
         </div>
