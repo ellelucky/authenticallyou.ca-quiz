@@ -68,7 +68,10 @@ export async function saveQuizResult(data: {
   }
 
   if (error) {
-    console.error('Supabase insert error:', error);
+    console.error('Supabase insert error code:', error.code);
+    console.error('Supabase insert error message:', error.message);
+    console.error('Supabase insert error details:', error.details);
+    console.error('Supabase insert error hint:', error.hint);
     throw new Error('Failed to save quiz result');
   }
 

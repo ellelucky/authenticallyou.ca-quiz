@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Error saving quiz result:', error);
     return NextResponse.json(
-      { error: 'Failed to save quiz result' },
+      { error: 'Failed to save quiz result', detail: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }

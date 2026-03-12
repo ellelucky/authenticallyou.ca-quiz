@@ -288,6 +288,12 @@ const quizData: QuizSection[] = [
       },
       {
         id: 27,
+        question: "Which project would you most want to focus on next?",
+        options: ["Personal brand YouTube channel", "Short-form content (reels & shorts)", "A high-converting VSL", "Video course content", "Something else"],
+        category: "content",
+      },
+      {
+        id: 28,
         question: "Which feels most true right now?",
         options: ["\"I want to show up but I'm scared.\"", "\"I'm figuring it out.\"", "\"I'm close.\"", "\"I'm confident.\"", "\"I'm ready for mastery.\""],
         category: "primary",
@@ -522,11 +528,12 @@ export default function QuizPage() {
         }),
       });
 
+      const data = await response.json();
       if (!response.ok) {
+        alert('DEBUG ERROR: ' + JSON.stringify(data));
         throw new Error('Failed to save results');
       }
 
-      const data = await response.json();
       console.log('Quiz results saved:', data.id);
     } catch (error) {
       console.error('Error saving quiz results:', error);
@@ -611,7 +618,7 @@ export default function QuizPage() {
   }
 
   if (showContactForm) {
-    const canSubmit = userName.trim().length > 0 && userEmail.trim().length > 0;
+    const canSubmit = userName.trim().length > 0 && userEmail.trim().length > 0 && userPhone.trim().length > 0;
     return (
       <div className="calm-gradient-radial min-h-screen text-[#3D3D3D] relative">
         <AuroraBackground />
@@ -657,7 +664,7 @@ export default function QuizPage() {
               <div className="space-y-5 max-w-md mx-auto">
                 <div>
                   <label htmlFor="name" className="font-sans text-sm font-medium text-[#3D3D3D] block mb-2">
-                    Name
+                    Name <span className="text-[#C9A86C]">*</span>
                   </label>
                   <input
                     id="name"
@@ -670,7 +677,7 @@ export default function QuizPage() {
                 </div>
                 <div>
                   <label htmlFor="email" className="font-sans text-sm font-medium text-[#3D3D3D] block mb-2">
-                    Email
+                    Email <span className="text-[#C9A86C]">*</span>
                   </label>
                   <input
                     id="email"
@@ -683,7 +690,7 @@ export default function QuizPage() {
                 </div>
                 <div>
                   <label htmlFor="phone" className="font-sans text-sm font-medium text-[#3D3D3D] block mb-2">
-                    Phone number
+                    Phone number <span className="text-[#C9A86C]">*</span>
                   </label>
                   <input
                     id="phone"

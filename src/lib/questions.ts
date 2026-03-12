@@ -26,5 +26,6 @@ export const QUESTIONS: Record<number, string> = {
   24: "What would help you most right now?",
   25: "How do you prefer to get unstuck?",
   26: "Right now, what are you most drawn to creating?",
-  27: "Which feels most true right now?",
+  27: "Which project would you most want to focus on next?",
+  28: "Which feels most true right now?",
 };
