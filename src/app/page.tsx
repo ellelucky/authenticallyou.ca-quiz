@@ -602,7 +602,7 @@ export default function QuizPage() {
                 Discover where you are on your camera confidence journey. Get clarity on your patterns, friction points, and where support helps most.
               </p>
               <p className="font-sans text-sm text-[#6B6B6B]/70 mb-8">
-                27 questions · Takes about 5 minutes
+                28 questions · Takes about 5 minutes
               </p>
               <button
                 onClick={() => setShowIntro(false)}
