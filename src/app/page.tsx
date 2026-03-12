@@ -282,15 +282,15 @@ const quizData: QuizSection[] = [
       },
       {
         id: 26,
-        question: "Right now, what are you most drawn to creating?",
-        options: ["A simple intro or welcome video", "Short-form videos (reels / shorts)", "Longer conversations or teaching", "Educational or course-style content", "I'm not sure yet"],
+        question: "Which project would you most want to focus on next?",
+        options: ["Personal brand YouTube channel", "Short-form content (reels & shorts)", "A high-converting VSL", "Video course content", "Something else"],
         category: "content",
       },
       {
         id: 27,
-        question: "Which project would you most want to focus on next?",
-        options: ["Personal brand YouTube channel", "Short-form content (reels & shorts)", "A high-converting VSL", "Video course content", "Something else"],
-        category: "content",
+        question: "How long have you been wanting to feel more confident on camera?",
+        options: ["Less than 3 months", "3–6 months", "6 months to a year", "More than a year", "Honestly... years"],
+        category: "primary",
       },
       {
         id: 28,
