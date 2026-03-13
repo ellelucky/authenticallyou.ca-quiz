@@ -316,3 +316,20 @@ body {
   ),
   var(--cream);
 }
+
+/* Testimonials infinite scroll marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+  gap: 1.5rem;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}

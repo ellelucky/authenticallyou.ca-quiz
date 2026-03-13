@@ -4,6 +4,123 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 
+const TESTIMONIALS = [
+  {
+    name: "Kat Oakley",
+    quote: "Elfina was such a pleasure to work with! We did the deep digging that is often overlooked when entering the creator space. It's the combination of her experience and ability to hold your hand while simultaneously pushing you out of \"the nest\" that leads to big breakthroughs. Before her program, I felt like a robot in front of the camera. I would blank out and block my own way to progress. After, I easily let my personality shine through, while getting what I want the content to convey across! 10/10, thanks again Elfina!",
+    stars: 5,
+    image: "/review-profiles/kat.jpg",
+  },
+  {
+    name: "Kat Oakley",
+    quote: "The most important breakthrough working with you is how I feel on camera. I have never just looked into a lens with zero issues — I always struggled with nitpicking how I looked or sounded, which would pull my eyeline away and block my personality from shining through. I filmed multiple videos that were off the cuff, had direct eyeline, AND were the REAL me. This has bled into how I'm designing my community — down to the copy and emojis. I am relaxed, present, and authentically me. I can't thank you enough!!!",
+    stars: 5,
+    image: "/review-profiles/kat.jpg",
+  },
+  {
+    name: "Tina Shafer",
+    quote: "When I first got here, I was super intimidated by being on camera and didn't even know how to operate my own camera phone! Now I feel more comfortable showing up as myself than I ever thought I could.",
+    stars: 5,
+    image: "/review-profiles/tina.jpeg",
+  },
+  {
+    name: "Iris vd Stelt",
+    quote: "Her guidance isn't about following a step-by-step plan to appear on camera — it's about learning to be yourself. You don't just learn how to show up on camera — you discover who you truly are.",
+    stars: 5,
+    image: "/review-profiles/iris image.jpg",
+  },
+  {
+    name: "Steve",
+    quote: "Elfina is the real deal! Her approach to camera confidence goes way beyond technique and gets to the heart of self filming.",
+    stars: 5,
+    image: "/review-profiles/steve.png",
+  },
+  {
+    name: "Mira Nguyen",
+    quote: "I came to her because I want to create content, but noticed something blocking me from being authentic in front of the camera. In only the first session, she helped me uncover so much. I think everybody should do sessions with her.",
+    stars: 5,
+    image: "/review-profiles/mira.png",
+  },
+  {
+    name: "Tina",
+    quote: "Elfina has such a gift for helping people feel at ease both in front of and behind the camera. Being part of her community has not only improved my comfort on camera, it's helped me express myself more freely and fully.",
+    stars: 5,
+    image: "/review-profiles/tina.jpeg",
+  },
+  {
+    name: "A. N.",
+    quote: "I haven't recorded a video in I can't remember when! Not only did I record 5 videos but I tapped back into WHY I want to record videos!! 5 stars all the way!",
+    stars: 5,
+    image: "/review-profiles/ama.jpg",
+  },
+  {
+    name: "Lisa Ann",
+    quote: "She managed to change my dread, doubt and fogginess into fresh desire, doable first steps, and belief that maybe I can actually get this 'video stuff' off the ground!",
+    stars: 5,
+    image: "/review-profiles/lisa.jpeg",
+  },
+  {
+    name: "Claudia Chen",
+    quote: "She creates a safe space where I can share at my own pace, offering invaluable insights into the barriers in my life that have held me back. Her approach is unique and transformative.",
+    stars: 5,
+    image: "/review-profiles/claudia.png",
+  },
+  {
+    name: "Sylvain Z",
+    quote: "You really know how to actively listen to people, and are able to instore a confidence mood right from the start. Definitely book a session with Elfina if you need focus, or are struggling with Imposter Syndrome!",
+    stars: 5,
+    image: "/review-profiles/sylvain image.jpeg",
+  },
+  {
+    name: "Nick Gibson",
+    quote: "I was struggling with overwhelm and feeling directionless in my business. It all felt like too much. I was lucky enough to find Elfina and get on a 1-1 call with her. It was exactly what I needed. I don't have the words to explain the experience properly. Even though I went in wondering \"Will this work for me?\", I left myself open to all possibilities and was shocked at how eye-opening this session truly was. I came out with a clear picture of how I should move forward, and feeling absolutely amazing! Highly recommend!",
+    stars: 5,
+    image: "/review-profiles/nick gibson.jpeg",
+  },
+  {
+    name: "Miroslav P",
+    quote: "Elfina has helped me find great clarity during my entrepreneurial journey through the help of mindful practice and I was able to move through blocks and uncover some of my hidden potential which allowed me to become a better leader and a better person.",
+    stars: 5,
+    image: "/review-profiles/andrew.jpeg",
+  },
+  {
+    name: "Ben Biedrawa",
+    quote: "I had a one-on-one session with Elfina where I got to explore deeply personal experiences. Through her guidance, we did a trauma blockage release, going back into my past even as far as childhood. During this process, I was able to connect with and find a sense of peace with my emotionally hurt younger self. It was really eye opening and insightful to not just understand on a rational level but also feel on an emotional level my past. Elfina's gentle and powerful ability to help me uncover and address the root causes of my struggles was a truly healing experience making it possible for me to release long-held emotional barriers. The session left me feeling lighter and more aligned with myself. I highly recommend working with Elfina to anyone who feels held back or stuck in their current life situation - it probably is the way out.",
+    stars: 5,
+    image: "/review-profiles/Ben image.png",
+  },
+  {
+    name: "Sarah Holm",
+    quote: "Just had a zoom call with Elfina and it was so much more than I ever expected! She has a lovely voice and a deep understanding of the chakras and how all things align in the world of meditation and inner healing. I felt for the first time what it is like to be in a meditative state. I was anxious at first tbh and almost chickened out but so happy I committed to the time. One hour and wow!! The changes I felt in my body were completely unexpected and very positive. I can ACTUALLY meditate. So if I can do this... anyone can. Will be doing more of this and looking forward to our next session. Calm, confident and excited. She is absolutely amazing!",
+    stars: 5,
+    image: "/review-profiles/Sarah Holm.png",
+  },
+  {
+    name: "Nathalie Dysthe",
+    quote: "Whenever I feel de-railed in my pursuits, one meeting with you and I feel confident and back-on-track. You gave me amazing ideas and direction this morning and my wheels are turning like crazy. I feel so inspired! I look forward to our meet-up next week and being able to show you my progress.",
+    stars: 5,
+    image: "/review-profiles/nathalie.png",
+  },
+  {
+    name: "Angela, Journaling Mentor",
+    quote: "I joined Authentically You this week and I am so in love with all the encouragement and tons and tons of information inside of her classroom. So if you have not joined, and you are kinda like in business, \"I need to show up on camera\" — then this is the place to be. Thank you for the space.",
+    stars: 5,
+    image: "/review-profiles/angela journaling mentor.png",
+  },
+  {
+    name: "Iris van der Stelt",
+    quote: "Elfina has this superpower of listening through what you say, hearing the layers underneath, touching the real essence of what it's truly about. And that... is both incredibly helpful and deeply healing. To be seen, to be heard, to be supported, and to gain clarity on the core of your issue — it makes such a difference. Combine that with the kindness of everyone in the group, and it creates a learning environment that feels safe, inspiring, and so nourishing. I'm just really, really grateful.",
+    stars: 5,
+    image: "/review-profiles/iris image.jpg",
+  },
+  {
+    name: "NDB",
+    quote: "I had the honor of spending two whole hours with Elfina. Going in, I had no expectations and didn't even realize where my real problems lay. I've been in finance for nearly 10 years — a decade of constant hustle, intense focus, and overwhelming responsibility. The weight of it all was overwhelming. I carried so much on my shoulders that I fell into a mild depression, lost the ability to truly feel, and became disconnected from the real world. But in those two hours with Elfina, something shifted. I started becoming conscious again. I began to feel joy and even discovered a safe space within myself. Now, whenever life feels dark and cold, I know exactly where to go. That safe place was there all along, right by my side. I'm incredibly grateful and deeply moved by this experience. From the bottom of my heart, I highly recommend that you find yourself again.",
+    stars: 5,
+    image: "/review-profiles/ndb.png",
+  },
+];
+
 // Pre-generated particle positions for performance (no state updates)
 const PARTICLES = Array.from({ length: 50 }, (_, i) => ({
   id: i,
@@ -442,6 +559,7 @@ export default function QuizPage() {
   const [userPhone, setUserPhone] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [studioTier, setStudioTier] = useState<"standard" | "premium" | "vip">("premium");
+  const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
 
   const question = allQuestions[currentQuestion];
   const totalQuestions = allQuestions.length;
@@ -560,7 +678,7 @@ export default function QuizPage() {
 
   if (showIntro) {
     return (
-      <div className="calm-gradient-radial min-h-screen text-[#3D3D3D] relative">
+      <div className="calm-gradient-radial text-[#3D3D3D] relative">
         <AuroraBackground />
         <FloatingParticles />
 
@@ -578,7 +696,7 @@ export default function QuizPage() {
                 Join the Community
               </a>
               <a
-                href="https://bts.authenticallyou.ca/insiders-all-access-call-form" target="_blank" rel="noopener noreferrer"
+                href="/apply"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -587,6 +705,7 @@ export default function QuizPage() {
           </div>
         </header>
 
+        {/* Hero */}
         <div className="min-h-screen flex items-center justify-center px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -610,9 +729,108 @@ export default function QuizPage() {
               >
                 Start the Quiz
               </button>
+              {/* Scroll hint */}
+              <button
+                onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}
+                className="mt-6 flex flex-col items-center gap-1 mx-auto hover:text-[#C9A86C] transition-colors group"
+              >
+                <span className="text-[#C9A86C] text-2xl tracking-wide">★★★★★</span>
+                <span className="font-sans text-sm text-[#6B6B6B]/70 group-hover:text-[#C9A86C] transition-colors">See what others are saying ↓</span>
+              </button>
             </div>
           </motion.div>
         </div>
+
+        {/* Testimonials */}
+        <div id="testimonials" className="relative z-10 pb-24">
+          <div className="text-center mb-10">
+            <p className="font-sans text-xs uppercase tracking-widest text-[#6B6B6B]/60 mb-2">What people are saying</p>
+            <div className="flex items-center justify-center gap-0.5 text-[#C9A86C] text-lg">
+              {"★★★★★"}
+            </div>
+          </div>
+          <div className="overflow-hidden">
+            <div className="marquee-track">
+              {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => {
+                const idx = i % TESTIMONIALS.length;
+                const initials = t.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2);
+                const avatarColors = ['bg-[#C9A86C]/20 text-[#C9A86C]','bg-[#C5B4E3]/30 text-[#8B6FAD]','bg-[#B4D4E3]/30 text-[#5A8FAD]','bg-[#E3B4D4]/30 text-[#AD5A8F]','bg-[#E8D5B5]/40 text-[#8B7040]'];
+                const colorClass = avatarColors[idx % avatarColors.length];
+                return (
+                  <button
+                    key={i}
+                    onClick={() => setExpandedTestimonial(idx)}
+                    className="flex-shrink-0 w-80 bg-white/60 backdrop-blur-sm rounded-2xl p-6 border border-white/80 text-left hover:bg-white/80 hover:border-[#C9A86C]/30 transition-all cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      {t.image ? (
+                        <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                      ) : (
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center font-sans font-bold text-sm flex-shrink-0 ${colorClass}`}>
+                          {initials}
+                        </div>
+                      )}
+                      <div>
+                        <p className="font-sans text-xs font-semibold text-[#3D3D3D]">{t.name}</p>
+                        <div className="text-[#C9A86C] text-xs">{"★★★★★"}</div>
+                      </div>
+                    </div>
+                    <p className="font-sans text-sm text-[#3D3D3D] leading-relaxed line-clamp-3">
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
+                    <p className="font-sans text-xs text-[#C9A86C] mt-3">Read more →</p>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Expanded testimonial modal */}
+        {expandedTestimonial !== null && (
+          <div
+            className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm"
+            onClick={() => setExpandedTestimonial(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-white rounded-3xl p-8 max-w-md w-full soft-glow"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {(() => {
+                const t = TESTIMONIALS[expandedTestimonial];
+                const initials = t.name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2);
+                const avatarColors = ['bg-[#C9A86C]/20 text-[#C9A86C]','bg-[#C5B4E3]/30 text-[#8B6FAD]','bg-[#B4D4E3]/30 text-[#5A8FAD]','bg-[#E3B4D4]/30 text-[#AD5A8F]','bg-[#E8D5B5]/40 text-[#8B7040]'];
+                const colorClass = avatarColors[expandedTestimonial % avatarColors.length];
+                return (
+                  <>
+                    <div className="flex items-center gap-3 mb-5">
+                      {t.image ? (
+                        <img src={t.image} alt={t.name} className="w-12 h-12 rounded-full object-cover flex-shrink-0" />
+                      ) : (
+                        <div className={`w-12 h-12 rounded-full flex items-center justify-center font-sans font-bold text-sm flex-shrink-0 ${colorClass}`}>
+                          {initials}
+                        </div>
+                      )}
+                      <div>
+                        <p className="font-sans font-semibold text-[#3D3D3D]">{t.name}</p>
+                        <div className="text-[#C9A86C] text-sm">{"★★★★★"}</div>
+                      </div>
+                    </div>
+                    <p className="font-sans text-[#3D3D3D] leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
+                    <button
+                      onClick={() => setExpandedTestimonial(null)}
+                      className="mt-6 font-sans text-sm text-[#6B6B6B] hover:text-[#3D3D3D] transition-colors"
+                    >
+                      Close ×
+                    </button>
+                  </>
+                );
+              })()}
+            </motion.div>
+          </div>
+        )}
       </div>
     );
   }
@@ -637,7 +855,7 @@ export default function QuizPage() {
                 Join the Community
               </a>
               <a
-                href="https://bts.authenticallyou.ca/insiders-all-access-call-form" target="_blank" rel="noopener noreferrer"
+                href="/apply"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -743,7 +961,7 @@ export default function QuizPage() {
                 Join the Community
               </a>
               <a
-                href="https://bts.authenticallyou.ca/insiders-all-access-call-form" target="_blank" rel="noopener noreferrer"
+                href="/apply"
                 className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
               >
                 Apply to Work with Me
@@ -931,7 +1149,7 @@ export default function QuizPage() {
                         "Private 1:1 mentorship w/ Elfina: personalized direction, support + accelerated results",
                       ],
                   cta: studioTier === "standard" ? "Join Standard" : studioTier === "premium" ? "Join Premium" : "Join VIP",
-                  href: "https://bts.authenticallyou.ca/insiders-all-access-call-form",
+                  href: "/apply",
                   color: "#C9A86C",
                   bgGradient: "from-[#C9A86C]/15 to-[#C5B4E3]/10",
                   borderColor: "border-[#C9A86C]/40",
@@ -1071,7 +1289,7 @@ export default function QuizPage() {
               Join the Community
             </a>
             <a
-              href="https://bts.authenticallyou.ca/insiders-all-access-call-form" target="_blank" rel="noopener noreferrer"
+              href="/apply"
               className="font-sans text-xs md:text-sm font-semibold bg-[#C9A86C] text-white px-4 py-2 rounded-full hover:bg-[#b8975b] transition-all"
             >
               Apply to Work with Me
