@@ -102,7 +102,7 @@ export default function ApplyPage() {
           {/* Programme outline link */}
           <div className="text-center mb-6">
             <a
-              href="#"
+              href="https://drive.google.com/file/d/1i0yfGYDPFtgzLjOAuJEnp5Z06ym7gV3A/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="font-sans text-sm text-[#C9A86C] underline underline-offset-4 hover:text-[#b8975b] transition-colors"
