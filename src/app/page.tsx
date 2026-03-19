@@ -1118,31 +1118,25 @@ export default function QuizPage() {
                 {
                   id: "studio",
                   name: "In the Studio",
-                  price: studioTier === "standard" ? "$888" : studioTier === "premium" ? "$1,288" : "$2,288",
+                  price: studioTier === "standard" ? "$888" : "$1,288",
                   period: "/month",
                   description: studioTier === "standard"
                     ? "Full access to all classroom content + call replays. Implement at your own pace."
-                    : studioTier === "premium"
-                    ? "Live cohort with structure, accountability + pro-level guidance."
-                    : "Private 1:1 mentorship with personalized direction + accelerated results.",
+                    : "Live cohort with structure, accountability + pro-level guidance.",
                   features: studioTier === "standard"
                     ? [
                         "Full access to all classroom content + call replays",
                         "Implement at your own pace",
                       ]
-                    : studioTier === "premium"
-                    ? [
+                    : [
                         "💥 Live Cohort Starts March 30!",
                         "Step-by-step guidance: YouTube, personal brand, VSLs, shorts/reels + course content",
                         "Pro-level scripting, set design, filming, editing + publishing guidance",
                         "12-Week Live Cohort with structure, accountability + momentum",
                         "Priority invites to events + guest speaking opportunities",
                         "Full VIP access to Authentically You programs, weekly calls + community",
-                      ]
-                    : [
-                        "Private 1:1 mentorship w/ Elfina: personalized direction, support + accelerated results",
                       ],
-                  cta: studioTier === "standard" ? "Join Standard" : studioTier === "premium" ? "Join Premium" : "Join VIP",
+                  cta: studioTier === "standard" ? "Join Standard" : "Join Premium",
                   href: "/apply",
                   color: "#C9A86C",
                   bgGradient: "from-[#C9A86C]/15 to-[#C5B4E3]/10",
@@ -1177,7 +1171,7 @@ export default function QuizPage() {
 
                         {tier.id === "studio" && (
                           <div className="flex items-center gap-1 justify-end mb-2">
-                            {(["standard", "premium", "vip"] as const).map((t) => (
+                            {(["standard", "premium"] as const).map((t) => (
                               <button
                                 key={t}
                                 onClick={() => setStudioTier(t)}
@@ -1187,7 +1181,7 @@ export default function QuizPage() {
                                     : "bg-[#C9A86C]/10 text-[#6B6B6B] hover:bg-[#C9A86C]/20"
                                 }`}
                               >
-                                {t === "standard" ? "Standard" : t === "premium" ? "Premium" : "VIP"}
+                                {t === "standard" ? "Standard" : "Premium"}
                               </button>
                             ))}
                           </div>
