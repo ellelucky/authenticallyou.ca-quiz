@@ -1125,16 +1125,20 @@ export default function QuizPage() {
                     : "Live cohort with structure, accountability + pro-level guidance.",
                   features: studioTier === "standard"
                     ? [
-                        "Full access to all classroom content + call replays",
-                        "Implement at your own pace",
+                        "12-week cohort with 3 weekly sessions: learn, lab, get pro direction + feedback",
+                        "Learn scripting, filming, and confident on-camera delivery",
+                        "Build your YouTube, brand, and VSL with a clear step-by-step system",
+                        "Film, edit, and post consistently with support, not guesswork",
+                        "A proven system you can repeat → not a one-time push",
+                        "Build a content library that works for you long after Season 1 ends",
                       ]
                     : [
-                        "💥 Live Cohort Starts March 30!",
-                        "Step-by-step guidance: YouTube, personal brand, VSLs, shorts/reels + course content",
-                        "Pro-level scripting, set design, filming, editing + publishing guidance",
-                        "12-Week Live Cohort with structure, accountability + momentum",
-                        "Priority invites to events + guest speaking opportunities",
-                        "Full VIP access to Authentically You programs, weekly calls + community",
+                        "Everything in Standard + Only 5 spots available",
+                        "Weekly 1:1 + Direct WhatsApp access for real-time support between sessions",
+                        "Personal direction: we go deeper to uncover what's keeping you stuck on camera + in life",
+                        "I personally help you release hidden blocks + find your voice + unique filming style",
+                        "I'll review your camera presence, content, brand + positioning across platforms",
+                        "I'll build your roadmap how I built mine: for max efficiency + unstoppable growth",
                       ],
                   cta: studioTier === "standard" ? "Join Standard" : "Join Premium",
                   href: "/apply",
