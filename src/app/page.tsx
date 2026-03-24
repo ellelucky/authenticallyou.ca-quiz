@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 
@@ -549,8 +548,7 @@ function getStyleInsights(answers: Record<number, string[]>) {
   return insights;
 }
 
-function QuizPageInner() {
-  const searchParams = useSearchParams();
+export default function QuizPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string[]>>({});
   const [isComplete, setIsComplete] = useState(false);
@@ -558,11 +556,12 @@ function QuizPageInner() {
 
   // Preview mode: ?preview=results skips straight to the results page
   useEffect(() => {
-    if (searchParams.get("preview") === "results") {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("preview") === "results") {
       setIsComplete(true);
       setShowIntro(false);
     }
-  }, [searchParams]);
+  }, []);
   const [showContactForm, setShowContactForm] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -701,7 +700,7 @@ function QuizPageInner() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
-                className="hidden md:inline font-sans text-xs md:text-sm text-[#6B6B6B] hover:text-[#C9A86C] transition-all"
+                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Reviews
               </a>
@@ -866,7 +865,7 @@ function QuizPageInner() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
-                className="hidden md:inline font-sans text-xs md:text-sm text-[#6B6B6B] hover:text-[#C9A86C] transition-all"
+                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Reviews
               </a>
@@ -978,7 +977,7 @@ function QuizPageInner() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
-                className="hidden md:inline font-sans text-xs md:text-sm text-[#6B6B6B] hover:text-[#C9A86C] transition-all"
+                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
               >
                 Reviews
               </a>
@@ -1527,13 +1526,5 @@ function QuizPageInner() {
         </div>
       </div>
     </div>
-  );
-}
-
-export default function QuizPage() {
-  return (
-    <Suspense>
-      <QuizPageInner />
-    </Suspense>
   );
 }
