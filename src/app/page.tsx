@@ -700,9 +700,9 @@ export default function QuizPage() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
-                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
+                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#C9A86C] px-4 py-2 rounded-full border border-[#C9A86C] hover:bg-[#C9A86C] hover:text-white transition-all"
               >
-                Reviews
+                ★★★★★ Reviews
               </a>
               <a
                 href="https://www.skool.com/authenticallyou/about" target="_blank" rel="noopener noreferrer"
@@ -865,9 +865,9 @@ export default function QuizPage() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
-                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
+                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#C9A86C] px-4 py-2 rounded-full border border-[#C9A86C] hover:bg-[#C9A86C] hover:text-white transition-all"
               >
-                Reviews
+                ★★★★★ Reviews
               </a>
               <a
                 href="https://www.skool.com/authenticallyou/about" target="_blank" rel="noopener noreferrer"
@@ -977,9 +977,9 @@ export default function QuizPage() {
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
-                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#3D3D3D] px-4 py-2 rounded-full border border-[#E0D5C1] hover:border-[#C9A86C] hover:text-[#C9A86C] transition-all"
+                className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#C9A86C] px-4 py-2 rounded-full border border-[#C9A86C] hover:bg-[#C9A86C] hover:text-white transition-all"
               >
-                Reviews
+                ★★★★★ Reviews
               </a>
               <a
                 href="https://www.skool.com/authenticallyou/about" target="_blank" rel="noopener noreferrer"

@@ -16,6 +16,14 @@ export default function ApplyPage() {
           </Link>
           <nav className="flex items-center gap-3 md:gap-5">
             <a
+              href="https://reflections.authenticallyou.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline font-sans text-xs md:text-sm font-semibold bg-white text-[#C9A86C] px-4 py-2 rounded-full border border-[#C9A86C] hover:bg-[#C9A86C] hover:text-white transition-all"
+            >
+              ★★★★★ Reviews
+            </a>
+            <a
               href="https://www.skool.com/authenticallyou/about"
               target="_blank"
               rel="noopener noreferrer"
@@ -110,6 +118,114 @@ export default function ApplyPage() {
               View the full programme outline →
             </a>
           </div>
+
+          {/* Testimonials */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mb-10"
+          >
+            <div className="text-center mb-8">
+              <span className="font-sans text-sm tracking-[0.2em] uppercase text-[#C9A86C] block mb-3">
+                Client Stories
+              </span>
+              <h2 className="font-serif text-2xl md:text-3xl text-[#3D3D3D] mb-2">
+                What&apos;s possible when you say yes.
+              </h2>
+              <p className="font-sans text-sm text-[#6B6B6B]">
+                Real people. Real breakthroughs.
+              </p>
+            </div>
+
+            {/* Featured quote */}
+            <div className="bg-gradient-to-br from-[#C9A86C]/10 to-[#C5B4E3]/10 backdrop-blur-sm rounded-2xl p-8 border border-[#C9A86C]/20 mb-5">
+              <div className="flex gap-0.5 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4" fill="#C9A86C" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="font-serif text-lg text-[#3D3D3D] leading-relaxed mb-6 italic">
+                &ldquo;The most important breakthrough working with you is how I feel on camera. I have never just looked into a lens with zero issues. I filmed multiple videos that were off the cuff, had direct eyeline, AND were the REAL me. This has bled into how I&apos;m designing my community. I am relaxed, present, and authentically me. I can&apos;t thank you enough!!!&rdquo;
+              </p>
+              <div className="flex items-center gap-3">
+                <img src="/review-profiles/kat.jpg" alt="Kat Oakley" className="w-11 h-11 rounded-full object-cover border-2 border-white/80" />
+                <div>
+                  <div className="font-sans text-sm font-semibold text-[#3D3D3D]">Kat Oakley</div>
+                  <div className="font-sans text-xs text-[#6B6B6B]">Content Creator</div>
+                </div>
+              </div>
+            </div>
+
+            {/* 4-card grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              {[
+                {
+                  name: "Nick Gibson",
+                  label: "Business Owner",
+                  image: "/review-profiles/nick gibson.jpeg",
+                  quote: "I was lucky enough to find Elfina and get on a 1-1 call with her. Even though I went in wondering \"Will this work for me?\", I came out with a clear picture of how I should move forward, and feeling absolutely amazing. Highly recommend!",
+                },
+                {
+                  name: "Iris van der Stelt",
+                  label: "Community Member",
+                  image: "/review-profiles/iris image.jpg",
+                  quote: "Elfina has this superpower of listening through what you say, hearing the layers underneath, touching the real essence of what it's truly about. To be seen, to be heard, to be supported — it makes such a difference.",
+                },
+                {
+                  name: "Nathalie",
+                  label: "Community Member",
+                  image: "/review-profiles/nathalie.png",
+                  quote: "Whenever I feel de-railed in my pursuits, one meeting with you and I feel confident and back-on-track. You gave me amazing ideas and direction and my wheels are turning like crazy. I feel so inspired!",
+                },
+                {
+                  name: "Angela, Journaling Mentor",
+                  label: "Business Owner",
+                  image: "/review-profiles/angela journaling mentor.png",
+                  quote: "I joined Authentically You this week and I am so in love with all the encouragement and tons of information inside her classroom. If you need to show up on camera in business — this is the place to be.",
+                },
+              ].map((t, i) => (
+                <motion.div
+                  key={t.name}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                  className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-white/80 flex flex-col"
+                >
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(5)].map((_, s) => (
+                      <svg key={s} className="w-3.5 h-3.5" fill="#C9A86C" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="font-sans text-sm text-[#6B6B6B] leading-relaxed flex-grow mb-5">
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center gap-3 mt-auto">
+                    <img src={t.image} alt={t.name} className="w-9 h-9 rounded-full object-cover border-2 border-white/80" />
+                    <div>
+                      <div className="font-sans text-sm font-semibold text-[#3D3D3D]">{t.name}</div>
+                      <div className="font-sans text-xs text-[#6B6B6B]">{t.label}</div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <a
+                href="https://reflections.authenticallyou.ca"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-sm font-semibold text-[#C9A86C] hover:text-[#b8975b] underline underline-offset-4 transition-colors"
+              >
+                Read all client stories →
+              </a>
+            </div>
+          </motion.div>
 
           {/* Two paths */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
