@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Sparkles } from "lucide-react";
 
@@ -548,11 +549,20 @@ function getStyleInsights(answers: Record<number, string[]>) {
   return insights;
 }
 
-export default function QuizPage() {
+function QuizPageInner() {
+  const searchParams = useSearchParams();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string[]>>({});
   const [isComplete, setIsComplete] = useState(false);
   const [showIntro, setShowIntro] = useState(true);
+
+  // Preview mode: ?preview=results skips straight to the results page
+  useEffect(() => {
+    if (searchParams.get("preview") === "results") {
+      setIsComplete(true);
+      setShowIntro(false);
+    }
+  }, [searchParams]);
   const [showContactForm, setShowContactForm] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -1253,6 +1263,96 @@ export default function QuizPage() {
               );
             })()}
 
+            {/* Testimonials */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0 }}
+              className="mt-16"
+            >
+              <div className="text-center mb-10">
+                <span className="font-sans text-sm tracking-[0.2em] uppercase text-[#C9A86C] block mb-3">
+                  Real Results
+                </span>
+                <h2 className="font-serif text-2xl md:text-3xl text-[#3D3D3D] mb-3">
+                  Others were exactly where you are.
+                </h2>
+                <p className="font-sans text-[#6B6B6B] max-w-lg mx-auto">
+                  These are real people who felt the same way — and chose to do something about it.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+                {[
+                  {
+                    name: "Kat Oakley",
+                    label: "Content Creator",
+                    image: "/review-profiles/kat.jpg",
+                    quote: "Before her program, I felt like a robot in front of the camera. I would blank out and block my own way to progress. After, I easily let my personality shine through.",
+                    highlight: "felt like a robot in front of the camera",
+                    accent: "#C9A86C",
+                    border: "border-t-[#C9A86C]/40",
+                  },
+                  {
+                    name: "Mira Nguyen",
+                    label: "Community Member",
+                    image: "/review-profiles/mira.png",
+                    quote: "I noticed something blocking me from being authentic in front of the camera. In only the first session, she helped me uncover so much. I think everybody should do sessions with her.",
+                    highlight: "In only the first session, she helped me uncover so much.",
+                    accent: "#C5B4E3",
+                    border: "border-t-[#C5B4E3]/50",
+                  },
+                  {
+                    name: "A.N.",
+                    label: "Community Member",
+                    image: "/review-profiles/ama.jpg",
+                    quote: "I hadn't recorded a video in I can't remember when! Not only did I record 5 videos, but I tapped back into WHY I want to record videos!! 5 stars all the way!",
+                    highlight: "I tapped back into WHY I want to record videos",
+                    accent: "#B4D4E3",
+                    border: "border-t-[#B4D4E3]/50",
+                  },
+                ].map((t, i) => (
+                  <motion.div
+                    key={t.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.1 + i * 0.12 }}
+                    className={`bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-t-2 ${t.border} border-x-transparent border-b-transparent flex flex-col`}
+                    style={{ borderTopColor: t.accent + "66" }}
+                  >
+                    <div className="flex gap-0.5 mb-4">
+                      {[...Array(5)].map((_, s) => (
+                        <svg key={s} className="w-3.5 h-3.5" fill={t.accent} viewBox="0 0 20 20">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                      ))}
+                    </div>
+                    <p className="font-sans text-sm text-[#6B6B6B] leading-relaxed flex-grow mb-5">
+                      &ldquo;{t.quote}&rdquo;
+                    </p>
+                    <div className="flex items-center gap-3 mt-auto">
+                      <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover border-2 border-white/80" />
+                      <div>
+                        <div className="font-sans text-sm font-semibold text-[#3D3D3D]">{t.name}</div>
+                        <div className="font-sans text-xs text-[#6B6B6B]">{t.label}</div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="text-center">
+                <a
+                  href="https://reflections.authenticallyou.ca"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-sans text-sm font-semibold text-[#C9A86C] hover:text-[#b8975b] underline underline-offset-4 transition-colors"
+                >
+                  Read all client stories →
+                </a>
+              </div>
+            </motion.div>
+
             {/* Retake Quiz */}
             <div className="text-center mt-10">
               <button
@@ -1427,5 +1527,13 @@ export default function QuizPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function QuizPage() {
+  return (
+    <Suspense>
+      <QuizPageInner />
+    </Suspense>
   );
 }
