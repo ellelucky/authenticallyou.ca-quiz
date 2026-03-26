@@ -79,6 +79,69 @@ const QUESTIONS: Record<number, string> = {
   28: "Which feels most true right now?",
 };
 
+async function fireGHLNurtureWebhook(payload: {
+  name: string;
+  email: string;
+  phone: string;
+  zone: string;
+  answers: Record<number, string[]>;
+}) {
+  const webhookUrl = process.env.GHL_NURTURE_WEBHOOK_URL;
+  if (!webhookUrl) return;
+
+  const nameParts = payload.name.trim().split(' ');
+  const firstName = nameParts[0] || '';
+  const lastName = nameParts.slice(1).join(' ') || '';
+
+  // Each answer sent as its own named field so GHL can branch on any of them
+  const body = {
+    firstName,
+    lastName,
+    email: payload.email,
+    phone: payload.phone,
+    quizZone: payload.zone,
+    // Individual answers — use these as conditions in GHL workflow branches
+    q1_recording_frequency:    payload.answers[1]?.[0]  || '',
+    q2_platform:               payload.answers[2]?.[0]  || '',
+    q3_how_long_trying:        payload.answers[3]?.[0]  || '',
+    q4_feeling_about_recording:payload.answers[4]?.[0]  || '',
+    q5_videos_per_week:        payload.answers[5]?.[0]  || '',
+    q6_takes_per_video:        payload.answers[6]?.[0]  || '',
+    q7_time_per_video:         payload.answers[7]?.[0]  || '',
+    q8_after_record:           payload.answers[8]?.[0]  || '',
+    q9_watching_playback:      payload.answers[9]?.[0]  || '',
+    q10_performing:            payload.answers[10]?.[0] || '',
+    q11_connection:            payload.answers[11]?.[0] || '',
+    q12_after_mistake:         payload.answers[12]?.[0] || '',
+    q13_recording_thought:     payload.answers[13]?.[0] || '',
+    q14_least_intimidating:    payload.answers[14]?.[0] || '',
+    q15_support_style:         payload.answers[15]?.[0] || '',
+    q16_body_safety:           payload.answers[16]?.[0] || '',
+    q17_natural_format:        payload.answers[17]?.[0] || '',
+    q18_most_uncomfortable:    payload.answers[18]?.[0] || '',
+    q19_camera_feels:          payload.answers[19]?.[0] || '',
+    q20_consistency:           payload.answers[20]?.[0] || '',
+    q21_current_situation:     payload.answers[21]?.[0] || '',
+    q22_biggest_fear:          payload.answers[22]?.[0] || '',
+    q23_if_nothing_changed:    payload.answers[23]?.[0] || '',
+    q24_what_would_help:       payload.answers[24]?.join(', ') || '', // multi-select
+    q25_how_to_get_unstuck:    payload.answers[25]?.[0] || '',
+    q26_next_project:          payload.answers[26]?.[0] || '',
+    q27_how_long_wanting:      payload.answers[27]?.[0] || '',
+    q28_most_true:             payload.answers[28]?.[0] || '',
+  };
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+  } catch (err) {
+    console.error('GHL nurture webhook error:', err);
+  }
+}
+
 async function fireDiscordNotification(payload: {
   name: string;
   email: string;
@@ -170,6 +233,13 @@ export async function POST(request: NextRequest) {
           patterns: results.patterns || [],
           support: results.support,
           styleInsights: styleInsights || [],
+        }),
+        fireGHLNurtureWebhook({
+          name: name || '',
+          email,
+          phone: phone || '',
+          zone: results.zone,
+          answers,
         }),
         fireDiscordNotification({
           name: name || '',
