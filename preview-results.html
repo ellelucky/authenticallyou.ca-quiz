@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Results Preview — Authentically You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(ellipse at 60% 20%, #f5ede0 0%, #fdf8f2 40%, #ede8f5 100%);
+      min-height: 100vh;
+      color: #3D3D3D;
+      padding: 40px 20px 80px;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .hero {
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 48px;
+      text-align: center;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 40px rgba(201,168,108,0.12);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .hero p { color: #6B6B6B; font-size: 0.95rem; line-height: 1.7; }
+
+    .zone-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #C9A86C, #C5B4E3);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .section-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #6B6B6B;
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      position: relative;
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .card-standard {
+      background: linear-gradient(135deg, rgba(107,107,107,0.05), transparent);
+      border-color: rgba(107,107,107,0.2);
+    }
+
+    .card-premium {
+      background: linear-gradient(135deg, rgba(201,168,108,0.1), transparent);
+      border-color: rgba(201,168,108,0.3);
+    }
+
+    .card-vip {
+      background: linear-gradient(135deg, rgba(197,180,227,0.1), transparent);
+      border-color: rgba(197,180,227,0.3);
+    }
+
+    .card-studio {
+      background: linear-gradient(135deg, rgba(201,168,108,0.15), rgba(197,180,227,0.1));
+      border-color: rgba(201,168,108,0.4);
+    }
+
+    .card-recommended {
+      border-color: #C9A86C !important;
+      box-shadow: 0 0 0 2px rgba(201,168,108,0.3), 0 4px 24px rgba(201,168,108,0.15);
+    }
+
+    .recommended-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #C9A86C;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #3D3D3D;
+      margin-bottom: 4px;
+    }
+
+    .card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .card-price span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #6B6B6B;
+    }
+
+    .card-desc {
+      font-size: 0.8rem;
+      color: #6B6B6B;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .features { list-style: none; flex-grow: 1; margin-bottom: 20px; }
+
+    .features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #6B6B6B;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .check { flex-shrink: 0; margin-top: 2px; font-size: 0.85rem; }
+
+    .btn {
+      display: block;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 12px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-outline-gold { border: 2px solid #C9A86C; color: #C9A86C; background: transparent; }
+    .btn-outline-gold:hover { background: #C9A86C; color: white; }
+
+    .btn-outline-lavender { border: 2px solid #C5B4E3; color: #3D3D3D; background: transparent; }
+    .btn-outline-lavender:hover { background: rgba(255,255,255,0.5); }
+
+    .btn-outline-grey { border: 2px solid #6B6B6B; color: #3D3D3D; background: transparent; }
+    .btn-outline-grey:hover { background: rgba(255,255,255,0.5); }
+
+    .btn-gold { background: #C9A86C; color: white; }
+    .btn-gold:hover { background: #b8975b; }
+
+    .btn-dark { background: #3D3D3D; color: white; }
+    .btn-dark:hover { background: #2D2D2D; }
+
+    .btn-disabled { background: rgba(107,107,107,0.15); color: #6B6B6B; cursor: default; }
+
+    /* Studio tier toggle */
+    .studio-toggle {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .toggle-btn {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    .toggle-btn.active { background: #C9A86C; color: white; }
+    .toggle-btn.inactive { background: rgba(201,168,108,0.1); color: #6B6B6B; }
+    .toggle-btn.inactive:hover { background: rgba(201,168,108,0.2); }
+
+    .note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6B6B6B;
+      margin-top: 32px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="zone-badge">✨ Preview Mode — Building Zone</div>
+      <h1>Here&rsquo;s your personalised path forward</h1>
+      <p>Based on your results, here&rsquo;s the path that fits where you are right now.</p>
+    </div>
+
+    <!-- Cards heading -->
+    <p class="section-label">Your recommended next step</p>
+    <p class="section-sub">Based on your results, here&rsquo;s the path that fits where you are right now.</p>
+
+    <!-- Cards grid -->
+    <div class="grid">
+
+      <!-- Standard -->
+      <div class="card card-standard">
+        <div class="card-name">Standard</div>
+        <div class="card-price" style="color:#6B6B6B">$0<span>/month</span></div>
+        <div class="card-desc">Join the community and start your journey</div>
+        <ul class="features">
+          <li><span class="check" style="color:#6B6B6B">✓</span>🎯 Welcome Video Flow (Start Filming Today!)</li>
+          <li><span class="check" style="color:#6B6B6B">✓</span>Confidence Foundation Tools + Resources</li>
+          <li><span class="check" style="color:#6B6B6B">✓</span>Find your Camera Confidence Zone Quiz</li>
+        </ul>
+        <a href="https://www.skool.com/authenticallyou/about" target="_blank" class="btn btn-disabled">Current Plan</a>
+      </div>
+
+      <!-- Premium — recommended for Building Zone -->
+      <div class="card card-premium card-recommended">
+        <div class="recommended-badge">⭐ Recommended for You</div>
+        <div class="card-name">Premium</div>
+        <div class="card-price" style="color:#C9A86C">$28<span>/month</span></div>
+        <div class="card-desc">Guided support to build your confidence</div>
+        <ul class="features">
+          <li><span class="check" style="color:#C9A86C">✓</span>+100 Weekly Creator Prompts (Ideas to help you film fast) +10 New Prompts Weekly</li>
+          <li><span class="check" style="color:#C9A86C">✓</span>Micro BTS Trainings &amp; Mini Courses</li>
+          <li><span class="check" style="color:#C9A86C">✓</span>From Skool to Hollywood → Elfina behind the scenes</li>
+          <li><span class="check" style="color:#C9A86C">✓</span>Members-only app: from zero to a ready-to-post video in 3 minutes (COMING SOON)</li>
+        </ul>
+        <a href="https://www.skool.com/authenticallyou/plans" target="_blank" class="btn btn-gold">Join Premium</a>
+      </div>
+
+      <!-- VIP -->
+      <div class="card card-vip">
+        <div class="card-name">VIP</div>
+        <div class="card-price" style="color:#C5B4E3">$98<span>/month</span></div>
+        <div class="card-desc">Deep transformation with personal attention</div>
+        <ul class="features">
+          <li><span class="check" style="color:#C5B4E3">✓</span>⭐ Limited time offer over 67% off (reg $298)</li>
+          <li><span class="check" style="color:#C5B4E3">✓</span>Everything in Premium Plus Bonus access to industry pros (makeup, set, editing)</li>
+          <li><span class="check" style="color:#C5B4E3">✓</span>288 Confidence Prompts: 1 minute a day, get the prompt, hit record, answer, post, done!</li>
+          <li><span class="check" style="color:#C5B4E3">✓</span>Weekly live calls with Elfina → get unstuck, gain clarity + keep moving forward</li>
+          <li><span class="check" style="color:#C5B4E3">✓</span>5 Videos in 5 Days: a complete framework — shorts, long-form, VSLs + course videos</li>
+        </ul>
+        <a href="https://www.skool.com/authenticallyou/plans" target="_blank" class="btn btn-outline-lavender">Join VIP</a>
+      </div>
+
+      <!-- 1:1 Coaching -->
+      <div class="card card-studio" id="studio-card">
+        <div class="studio-toggle">
+          <button class="toggle-btn active" onclick="setStudio('standard')">Standard</button>
+          <button class="toggle-btn inactive" onclick="setStudio('premium')">Premium</button>
+        </div>
+        <div class="card-name">1:1 Coaching</div>
+        <div class="card-price" style="color:#C9A86C" id="studio-price">$888<span>/month</span></div>
+        <div class="card-desc" id="studio-desc">Private coaching to uncover your blocks and build your confident camera presence.</div>
+        <ul class="features" id="studio-features">
+          <li><span class="check" style="color:#C9A86C">✓</span>🔥 Biweekly 1:1 with Elfina — internal + external, wherever you need to go</li>
+          <li><span class="check" style="color:#C9A86C">✓</span>Uncover blocks, blind spots + resistance holding you back on camera</li>
+          <li><span class="check" style="color:#C9A86C">✓</span>Healing sessions to disintegrate what's keeping you hidden</li>
+          <li><span class="check" style="color:#C9A86C">✓</span>Full access to the entire Authentically You ecosystem</li>
+          <li><span class="check" style="color:#C9A86C">✓</span>Your personal brand, filming + content system built around the real you</li>
+        </ul>
+        <a href="/apply" class="btn btn-dark" id="studio-cta">Apply Now</a>
+      </div>
+
+    </div>
+
+    <p class="note">This is a preview file — card content matches the live quiz results page.</p>
+  </div>
+
+  <script>
+    const studioData = {
+      standard: {
+        price: "$888",
+        desc: "Private coaching to uncover your blocks and build your confident camera presence.",
+        features: [
+          "🔥 Biweekly 1:1 with Elfina — internal + external, wherever you need to go",
+          "Uncover blocks, blind spots + resistance holding you back on camera",
+          "Healing sessions to disintegrate what's keeping you hidden",
+          "Full access to the entire Authentically You ecosystem",
+          "Your personal brand, filming + content system built around the real you",
+        ],
+        cta: "Apply Now",
+      },
+      premium: {
+        price: "$1,288",
+        desc: "Deeper, faster transformation with weekly sessions and direct access to Elfina.",
+        features: [
+          "Everything in Standard",
+          "💎 Weekly 1:1 intensity — for clients who need deeper, faster support",
+          "Personal WhatsApp — direct access to Elfina between sessions",
+          "I'll build your roadmap how I built mine: for max efficiency + unstoppable growth",
+          "Potential Podcast guest appearance — claim your voice publicly",
+        ],
+        cta: "Apply Now",
+      },
+    };
+
+    function setStudio(tier) {
+      const data = studioData[tier];
+      document.getElementById("studio-price").innerHTML = data.price + '<span>/month</span>';
+      document.getElementById("studio-desc").textContent = data.desc;
+      document.getElementById("studio-cta").textContent = data.cta;
+
+      const ul = document.getElementById("studio-features");
+      ul.innerHTML = data.features.map(f =>
+        `<li><span class="check" style="color:#C9A86C">✓</span>${f}</li>`
+      ).join("");
+
+      document.querySelectorAll(".toggle-btn").forEach((btn, i) => {
+        const tiers = ["standard", "premium"];
+        btn.className = "toggle-btn " + (tiers[i] === tier ? "active" : "inactive");
+      });
+    }
+  </script>
+</body>
+</html>

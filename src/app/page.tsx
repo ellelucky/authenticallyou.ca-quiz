@@ -1144,30 +1144,28 @@ export default function QuizPage() {
                 },
                 {
                   id: "studio",
-                  name: "In the Studio",
+                  name: "1:1 Coaching",
                   price: studioTier === "standard" ? "$888" : "$1,288",
                   period: "/month",
                   description: studioTier === "standard"
-                    ? "Full access to all classroom content + call replays. Implement at your own pace."
-                    : "Live cohort with structure, accountability + pro-level guidance.",
+                    ? "Private coaching to uncover your blocks and build your confident camera presence."
+                    : "Deeper, faster transformation with weekly sessions and direct access to Elfina.",
                   features: studioTier === "standard"
                     ? [
-                        "12-week cohort with 3 weekly sessions: learn, lab, get pro direction + feedback",
-                        "Learn scripting, filming, and confident on-camera delivery",
-                        "Build your YouTube, brand, and VSL with a clear step-by-step system",
-                        "Film, edit, and post consistently with support, not guesswork",
-                        "A proven system you can repeat → not a one-time push",
-                        "Build a content library that works for you long after Season 1 ends",
+                        "🔥 Biweekly 1:1 with Elfina — internal + external, wherever you need to go",
+                        "Uncover blocks, blind spots + resistance holding you back on camera",
+                        "Healing sessions to disintegrate what's keeping you hidden",
+                        "Full access to the entire Authentically You ecosystem",
+                        "Your personal brand, filming + content system built around the real you",
                       ]
                     : [
-                        "Everything in Standard + Only 5 spots available",
-                        "Weekly 1:1 + Direct WhatsApp access for real-time support between sessions",
-                        "Personal direction: we go deeper to uncover what's keeping you stuck on camera + in life",
-                        "I personally help you release hidden blocks + find your voice + unique filming style",
-                        "I'll review your camera presence, content, brand + positioning across platforms",
+                        "Everything in Standard",
+                        "💎 Weekly 1:1 intensity — for clients who need deeper, faster support",
+                        "Personal WhatsApp — direct access to Elfina between sessions",
                         "I'll build your roadmap how I built mine: for max efficiency + unstoppable growth",
+                        "Potential Podcast guest appearance — claim your voice publicly",
                       ],
-                  cta: studioTier === "standard" ? "Join Standard" : "Join Premium",
+                  cta: "Apply Now",
                   href: "/apply",
                   color: "#C9A86C",
                   bgGradient: "from-[#C9A86C]/15 to-[#C5B4E3]/10",
