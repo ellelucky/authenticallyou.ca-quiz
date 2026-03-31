@@ -49,19 +49,19 @@ export default function ApplyPage() {
               Are you ready to feel <em>confident</em> on camera and finally create the videos your Personal Brand needs?
             </h1>
             <p className="font-sans text-[#6B6B6B] leading-relaxed">
-              Videos are the fastest way to build connection + trust with your audience. Inside <strong>In The Studio</strong>, my team and I help you create high-impact video assets you feel confident and proud to publish — from your YouTube channel and personal brand to your VSL, shorts, reels, and course video content.
+              Videos are the fastest way to build connection + trust with your audience. Whether you&apos;re just starting out or ready to go deeper with 1:1 support, there&apos;s a place for you inside <strong>Authentically You</strong>.
             </p>
           </div>
 
           {/* What you get */}
           <div className="bg-white/50 backdrop-blur-sm rounded-3xl p-10 md:p-14 soft-glow mb-8">
-            <h2 className="font-serif text-2xl text-[#3D3D3D] mb-6 text-center">What you get</h2>
+            <h2 className="font-serif text-2xl text-[#3D3D3D] mb-6 text-center">What&apos;s inside</h2>
 
             <ul className="space-y-4 mb-8">
               {[
-                "12-Week Live Cohort w/ structure, accountability, support + momentum",
-                "Step-by-Step Guidance: YouTube + personal branding, VSLs, shorts/reels, course video content",
-                "Pro level scripting, set design, filming, editing + publishing guidance",
+                "Community membership with structured resources, prompts + accountability",
+                "Step-by-step guidance: YouTube, personal branding, shorts, reels + course content",
+                "Scripting, set design, filming, editing + publishing support",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 font-sans text-[#3D3D3D]">
                   <span className="text-lg leading-none mt-0.5">🌟</span>
@@ -72,7 +72,7 @@ export default function ApplyPage() {
 
             <ul className="space-y-4 mb-8">
               {[
-                "Insiders access to classroom content + call replays",
+                "Classroom content, mini courses + call replays",
                 "Priority invites to events + guest speaking opportunities",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 font-sans text-[#3D3D3D]">
@@ -84,7 +84,7 @@ export default function ApplyPage() {
 
             <ul className="space-y-4 mb-8">
               {[
-                "+ Full VIP access to Authentically You paid programs, content + community",
+                "VIP access to Authentically You paid programs, content + community",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3 font-sans text-[#3D3D3D]">
                   <span className="text-lg leading-none mt-0.5">🎁</span>
@@ -96,13 +96,7 @@ export default function ApplyPage() {
             <div className="border-t border-[#E0D5C1] pt-6">
               <p className="font-sans text-[#3D3D3D] flex items-start gap-3">
                 <span className="text-lg leading-none mt-0.5">💎</span>
-                <span>1:1 mentorship support available</span>
-              </p>
-            </div>
-
-            <div className="mt-6 bg-[#C9A86C]/10 rounded-2xl px-6 py-4 text-center">
-              <p className="font-sans text-sm font-semibold text-[#C9A86C]">
-                💥 Applications are now open for our March 30 launch. Limited seats available.
+                <span>1:1 private coaching available for personalised mentorship</span>
               </p>
             </div>
           </div>
