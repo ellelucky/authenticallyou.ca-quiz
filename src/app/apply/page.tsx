@@ -1,12 +1,86 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+const STAR_PATH = "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z";
+
+function Stars({ size = "w-4 h-4" }: { size?: string }) {
+  return (
+    <div className="flex gap-0.5">
+      {[...Array(5)].map((_, i) => (
+        <svg key={i} className={size} fill="#C9A86C" viewBox="0 0 20 20">
+          <path d={STAR_PATH} />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+const faqs = [
+  {
+    q: "How is 1:1 coaching different from the community?",
+    a: "The community gives you resources, prompts, and group energy. 1:1 coaching is private, personalised work with Elfina directly — we go into the deeper blocks, your specific brand, and build everything around you. It's not a programme you follow. It's built for you.",
+  },
+  {
+    q: "What if I'm not tech-savvy or don't have fancy equipment?",
+    a: "Camera confidence isn't about gear or editing skills. We work on how you feel in front of the lens, how you think about yourself on camera, and how you show up. The practical side comes naturally once the inner work is done.",
+  },
+  {
+    q: "What happens after I apply?",
+    a: "Once you submit your application, Elfina reviews it personally. If it's a good fit, you'll be invited to a discovery call to talk through where you are, what you need, and whether this is the right next step. No pressure — just a conversation.",
+  },
+  {
+    q: "Is there a minimum commitment?",
+    a: "1:1 coaching works best over at least 3 months — that's when the real transformation happens. We'll talk about what's right for your situation on the discovery call.",
+  },
+  {
+    q: "I'm not sure which tier is right for me — does it matter?",
+    a: "Apply for whichever feels most aligned and we'll figure it out together on the call. The core difference is frequency: Standard is biweekly sessions, Premium adds weekly sessions and direct WhatsApp access between calls.",
+  },
+];
 
 export default function ApplyPage() {
+  const [showStickyBar, setShowStickyBar] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => setShowStickyBar(window.scrollY > 500);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="calm-gradient-radial min-h-screen text-[#3D3D3D] relative">
+
+      {/* Sticky CTA bar */}
+      <AnimatePresence>
+        {showStickyBar && (
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed bottom-0 left-0 right-0 z-50 bg-[#FFF8F0]/95 backdrop-blur-sm border-t border-[#E0D5C1] px-6 py-3"
+          >
+            <div className="max-w-2xl mx-auto flex items-center justify-between gap-4">
+              <p className="font-serif text-sm text-[#3D3D3D] hidden sm:block italic">
+                Ready to go all in?
+              </p>
+              <a
+                href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans font-semibold bg-[#C9A86C] text-white px-6 py-2.5 rounded-full hover:bg-[#b8975b] transition-all text-sm whitespace-nowrap ml-auto"
+              >
+                Apply Now — Limited Spots
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#FFF8F0]/80 backdrop-blur-sm">
@@ -35,7 +109,7 @@ export default function ApplyPage() {
         </div>
       </header>
 
-      <div className="px-6 pt-32 pb-24">
+      <div className="px-6 pt-32 pb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,6 +126,49 @@ export default function ApplyPage() {
               This is private, deep-dive coaching with Elfina — for those who are done waiting and ready to finally show up fully, confidently, and as themselves on camera.
             </p>
           </div>
+
+          {/* Is this for you? */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-white/50 backdrop-blur-sm rounded-3xl p-10 soft-glow mb-8"
+          >
+            <h2 className="font-serif text-2xl text-[#3D3D3D] mb-7 text-center">Is this for you?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <p className="font-sans text-xs uppercase tracking-widest text-[#C9A86C] mb-4">This is for you if...</p>
+                <ul className="space-y-3">
+                  {[
+                    "You've been trying to show up on camera for a while and something keeps stopping you",
+                    "You know the blocks are deeper than just needing more practice",
+                    "You're ready to invest in yourself and want private, personalised support",
+                    "You want your content to feel like you — not a performance",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 font-sans text-sm text-[#3D3D3D]">
+                      <span className="text-[#C9A86C] shrink-0 mt-0.5">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="font-sans text-xs uppercase tracking-widest text-[#6B6B6B] mb-4">This isn&apos;t for you if...</p>
+                <ul className="space-y-3">
+                  {[
+                    "You're looking for a quick fix or a content template",
+                    "You're not ready to do inner work alongside the practical",
+                    "You prefer group coaching or a self-paced programme",
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 font-sans text-sm text-[#6B6B6B]">
+                      <span className="shrink-0 mt-0.5 opacity-40">✕</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Testimonials */}
           <motion.div
@@ -74,14 +191,8 @@ export default function ApplyPage() {
 
             {/* Featured quote */}
             <div className="bg-gradient-to-br from-[#C9A86C]/10 to-[#C5B4E3]/10 backdrop-blur-sm rounded-2xl p-8 border border-[#C9A86C]/20 mb-5">
-              <div className="flex gap-0.5 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4" fill="#C9A86C" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="font-serif text-lg text-[#3D3D3D] leading-relaxed mb-6 italic">
+              <Stars size="w-4 h-4" />
+              <p className="font-serif text-lg text-[#3D3D3D] leading-relaxed my-4 italic">
                 &ldquo;The most important breakthrough working with you is how I feel on camera. I have never just looked into a lens with zero issues. I filmed multiple videos that were off the cuff, had direct eyeline, AND were the REAL me. This has bled into how I&apos;m designing my community. I am relaxed, present, and authentically me. I can&apos;t thank you enough!!!&rdquo;
               </p>
               <div className="flex items-center gap-3">
@@ -128,14 +239,8 @@ export default function ApplyPage() {
                   transition={{ delay: 0.3 + i * 0.1 }}
                   className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 border border-white/80 flex flex-col"
                 >
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(5)].map((_, s) => (
-                      <svg key={s} className="w-3.5 h-3.5" fill="#C9A86C" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="font-sans text-sm text-[#6B6B6B] leading-relaxed flex-grow mb-5">
+                  <Stars size="w-3.5 h-3.5" />
+                  <p className="font-sans text-sm text-[#6B6B6B] leading-relaxed flex-grow my-4">
                     &ldquo;{t.quote}&rdquo;
                   </p>
                   <div className="flex items-center gap-3 mt-auto">
@@ -161,10 +266,19 @@ export default function ApplyPage() {
             </div>
           </motion.div>
 
-          {/* 1:1 Coaching tiers */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Scarcity + pricing header */}
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 bg-[#C9A86C]/10 border border-[#C9A86C]/25 text-[#C9A86C] font-sans text-xs font-semibold px-4 py-2 rounded-full mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C9A86C] animate-pulse inline-block" />
+              Limited spots available
+            </div>
+            <h2 className="font-serif text-2xl text-[#3D3D3D]">Choose your level of support</h2>
+          </div>
 
-            {/* 1:1 Standard — $888/month */}
+          {/* 1:1 Coaching tiers */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+
+            {/* Standard — $888/month */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -197,7 +311,7 @@ export default function ApplyPage() {
               </a>
             </motion.div>
 
-            {/* 1:1 Premium — $1,288/month */}
+            {/* Premium — $1,288/month */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -232,14 +346,73 @@ export default function ApplyPage() {
 
           </div>
 
-          {/* Back link */}
-          <div className="text-center mt-10">
-            <Link
-              href="/"
-              className="font-sans text-sm text-[#6B6B6B] hover:text-[#C9A86C] underline underline-offset-4 transition-colors"
+          {/* Inline mini testimonial near CTA */}
+          <div className="flex items-start gap-4 bg-white/40 rounded-2xl px-6 py-5 border border-white/60 mb-12">
+            <img src="/review-profiles/kat.jpg" alt="Kat Oakley" className="w-10 h-10 rounded-full object-cover border-2 border-white/80 shrink-0 mt-0.5" />
+            <div>
+              <Stars size="w-3 h-3" />
+              <p className="font-serif text-sm italic text-[#3D3D3D] leading-relaxed mt-1.5">
+                &ldquo;I filmed multiple videos off the cuff, had direct eyeline, AND were the REAL me. I am relaxed, present, and authentically me.&rdquo;
+              </p>
+              <p className="font-sans text-xs text-[#6B6B6B] mt-1.5">— Kat Oakley, Content Creator</p>
+            </div>
+          </div>
+
+          {/* FAQ */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mb-12"
+          >
+            <h2 className="font-serif text-2xl text-[#3D3D3D] text-center mb-6">Questions</h2>
+            <div className="space-y-2">
+              {faqs.map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-white/50 backdrop-blur-sm rounded-2xl border border-white/80 overflow-hidden"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between px-6 py-4 text-left gap-4"
+                  >
+                    <span className="font-sans text-sm font-semibold text-[#3D3D3D]">{faq.q}</span>
+                    <ChevronDown
+                      className={`w-4 h-4 text-[#C9A86C] shrink-0 transition-transform duration-200 ${openFaq === i ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {openFaq === i && (
+                      <motion.div
+                        key="content"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="font-sans text-sm text-[#6B6B6B] leading-relaxed px-6 pb-5">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Soft exit — community option */}
+          <div className="text-center border-t border-[#E0D5C1] pt-10 pb-4">
+            <p className="font-sans text-sm text-[#6B6B6B] mb-3">Not ready for 1:1 just yet?</p>
+            <a
+              href="https://www.skool.com/authenticallyou/about"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-sm font-semibold text-[#C9A86C] hover:text-[#b8975b] underline underline-offset-4 transition-colors"
             >
-              ← Back to the quiz
-            </Link>
+              Join the community from $0/month →
+            </a>
           </div>
 
         </motion.div>
