@@ -107,18 +107,6 @@ export default function ApplyPage() {
             </div>
           </div>
 
-          {/* Programme outline link */}
-          <div className="text-center mb-6">
-            <a
-              href="https://drive.google.com/file/d/1i0yfGYDPFtgzLjOAuJEnp5Z06ym7gV3A/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-sans text-sm text-[#C9A86C] underline underline-offset-4 hover:text-[#b8975b] transition-colors"
-            >
-              View the full programme outline →
-            </a>
-          </div>
-
           {/* Testimonials */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -227,24 +215,143 @@ export default function ApplyPage() {
             </div>
           </motion.div>
 
-          {/* Two paths */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Community membership tiers */}
+          <div className="text-center mb-8">
+            <p className="font-sans text-xs uppercase tracking-widest text-[#C9A86C] mb-2">Community Membership</p>
+            <h2 className="font-serif text-2xl text-[#3D3D3D]">Join the Authentically You community</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-16">
+
+            {/* Standard — Free */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-white/80 flex flex-col"
             >
-              <p className="font-sans text-xs uppercase tracking-widest text-[#6B6B6B]/60 mb-1">Standard</p>
-              <h3 className="font-serif text-2xl text-[#3D3D3D] mb-5">$888<span className="font-sans text-sm font-normal text-[#6B6B6B]">/month</span></h3>
+              <h3 className="font-serif text-3xl text-[#3D3D3D] mb-1">$0<span className="font-sans text-sm font-normal text-[#6B6B6B]">/month</span></h3>
+              <p className="font-sans text-sm font-semibold text-[#3D3D3D] mb-6">Standard</p>
               <ul className="space-y-3 mb-8 flex-grow">
                 {[
-                  "12-week cohort with 3 weekly sessions: learn, lab, get pro direction + feedback",
-                  "Learn scripting, filming, and confident on-camera delivery",
-                  "Build your YouTube, brand, and VSL with a clear step-by-step system",
-                  "Film, edit, and post consistently with support, not guesswork",
-                  "A proven system you can repeat → not a one-time push",
-                  "Build a content library that works for you long after Season 1 ends",
+                  "🎬 Welcome Video Flow (Start Filming Today!)",
+                  "Confidence Foundation Tools + Resources",
+                  "Find your Camera Confidence Zone Quiz",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 font-sans text-sm text-[#3D3D3D]">
+                    <span className="text-[#C9A86C] mt-0.5 shrink-0">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://www.skool.com/authenticallyou/about"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans font-semibold bg-[#C9A86C] text-white px-8 py-3 rounded-full hover:bg-[#b8975b] transition-all text-center"
+              >
+                Join Standard
+              </a>
+            </motion.div>
+
+            {/* Premium — $28/month */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-white/80 flex flex-col"
+            >
+              <h3 className="font-serif text-3xl text-[#3D3D3D] mb-1">$28<span className="font-sans text-sm font-normal text-[#6B6B6B]">/month</span></h3>
+              <p className="font-sans text-sm font-semibold text-[#3D3D3D] mb-6">Premium</p>
+              <ul className="space-y-3 mb-8 flex-grow">
+                {[
+                  "🔥 Creative Compass — film a ready-to-post video in under 10 minutes (limited access)",
+                  "100+ weekly creator prompts — 10 new ideas every week",
+                  "Micro BTS Trainings + Mini Courses",
+                  "From Skool to Hollywood → Elfina behind the scenes",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 font-sans text-sm text-[#3D3D3D]">
+                    <span className="text-[#C9A86C] mt-0.5 shrink-0">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://www.skool.com/authenticallyou/about"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans font-semibold bg-[#C9A86C] text-white px-8 py-3 rounded-full hover:bg-[#b8975b] transition-all text-center"
+              >
+                Join Premium
+              </a>
+            </motion.div>
+
+            {/* VIP — $98/month */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-gradient-to-br from-[#C9A86C]/10 to-[#C5B4E3]/10 backdrop-blur-sm rounded-2xl p-8 border border-[#C9A86C]/30 flex flex-col"
+            >
+              <h3 className="font-serif text-3xl text-[#3D3D3D] mb-1">$98<span className="font-sans text-sm font-normal text-[#6B6B6B]">/month</span></h3>
+              <p className="font-sans text-sm font-semibold text-[#3D3D3D] mb-6">VIP</p>
+              <ul className="space-y-3 mb-8 flex-grow">
+                {[
+                  "💎 Creative Compass — unlimited access, film anything in under 10 minutes",
+                  "Weekly live calls with Elfina → get unstuck, gain clarity + keep moving forward",
+                  "5 Videos in 5 Days: a complete framework — shorts, long-form, VSLs + course videos",
+                  "288 Confidence Prompts: 1 minute a day, get the prompt, hit record, answer, post, done!",
+                  "Everything in Premium + bonus access to industry pros",
+                  "💝 Annual bonus: Hidden Blocks Clarity Session with Elfina ($500 value)",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 font-sans text-sm text-[#3D3D3D]">
+                    <span className="text-[#C9A86C] mt-0.5 shrink-0">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="https://www.skool.com/authenticallyou/about"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans font-semibold bg-[#C9A86C] text-white px-8 py-3 rounded-full hover:bg-[#b8975b] transition-all soft-glow text-center"
+              >
+                Join VIP
+              </a>
+            </motion.div>
+
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center gap-4 mb-12">
+            <div className="flex-1 border-t border-[#E0D5C1]" />
+            <span className="font-sans text-xs uppercase tracking-widest text-[#6B6B6B]/60">Or go deeper</span>
+            <div className="flex-1 border-t border-[#E0D5C1]" />
+          </div>
+
+          {/* High-ticket 1:1 */}
+          <div className="text-center mb-8">
+            <p className="font-sans text-xs uppercase tracking-widest text-[#C9A86C] mb-2">Apply to Work With Me</p>
+            <h2 className="font-serif text-2xl text-[#3D3D3D] mb-2">1:1 Coaching</h2>
+            <p className="font-sans text-sm text-[#6B6B6B]">Personal, deep-dive support for those who are ready to go all in.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            {/* 1:1 Standard — $888/month */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-white/80 flex flex-col"
+            >
+              <h3 className="font-serif text-3xl text-[#3D3D3D] mb-1">$888<span className="font-sans text-sm font-normal text-[#6B6B6B]">/month</span></h3>
+              <p className="font-sans text-sm font-semibold text-[#3D3D3D] mb-6">Standard</p>
+              <ul className="space-y-3 mb-8 flex-grow">
+                {[
+                  "🔥 Biweekly 1:1 with Elfina — internal + external, wherever you need to go",
+                  "Uncover blocks, blind spots + resistance holding you back on camera",
+                  "Healing sessions to disintegrate what's keeping you hidden",
+                  "Full access to the entire Authentically You ecosystem",
+                  "Your personal brand, filming + content system built around the real you",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 font-sans text-sm text-[#3D3D3D]">
                     <span className="text-[#C9A86C] mt-0.5 shrink-0">✓</span>
@@ -258,32 +365,26 @@ export default function ApplyPage() {
                 rel="noopener noreferrer"
                 className="font-sans font-semibold border-2 border-[#C9A86C] text-[#C9A86C] px-8 py-3 rounded-full hover:bg-[#C9A86C] hover:text-white transition-all text-center"
               >
-                Join Standard
+                Apply — Standard
               </a>
             </motion.div>
 
+            {/* 1:1 Premium — $1,288/month */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-gradient-to-br from-[#C9A86C]/10 to-[#C5B4E3]/10 backdrop-blur-sm rounded-2xl p-8 border border-[#C9A86C]/30 flex flex-col relative"
+              className="bg-gradient-to-br from-[#C9A86C]/10 to-[#C5B4E3]/10 backdrop-blur-sm rounded-2xl p-8 border border-[#C9A86C]/30 flex flex-col"
             >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-[#C9A86C] text-white text-xs font-sans font-semibold px-4 py-1 rounded-full flex items-center gap-1">
-                  <Sparkles className="w-3 h-3" />
-                  Only 5 spots
-                </span>
-              </div>
-              <p className="font-sans text-xs uppercase tracking-widest text-[#6B6B6B]/60 mb-1 mt-2">Premium</p>
-              <h3 className="font-serif text-2xl text-[#3D3D3D] mb-5">$1,288<span className="font-sans text-sm font-normal text-[#6B6B6B]">/month</span></h3>
+              <h3 className="font-serif text-3xl text-[#3D3D3D] mb-1">$1,288<span className="font-sans text-sm font-normal text-[#6B6B6B]">/month</span></h3>
+              <p className="font-sans text-sm font-semibold text-[#3D3D3D] mb-6">Premium</p>
               <ul className="space-y-3 mb-8 flex-grow">
                 {[
-                  "Everything in Standard + Only 5 spots available",
-                  "Weekly 1:1 + Direct WhatsApp access for real-time support between sessions",
-                  "Personal direction: we go deeper to uncover what's keeping you stuck on camera + in life",
-                  "I personally help you release hidden blocks + find your voice + unique filming style",
-                  "I'll review your camera presence, content, brand + positioning across platforms",
+                  "Everything in Standard",
+                  "💎 Weekly 1:1 intensity — for clients who need deeper, faster support",
+                  "Personal WhatsApp — direct access to Elfina between sessions",
                   "I'll build your roadmap how I built mine: for max efficiency + unstoppable growth",
+                  "Potential Podcast guest appearance — claim your voice publicly",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 font-sans text-sm text-[#3D3D3D]">
                     <span className="text-[#C9A86C] mt-0.5 shrink-0">✓</span>
@@ -292,14 +393,15 @@ export default function ApplyPage() {
                 ))}
               </ul>
               <a
-                href="https://bts.authenticallyou.ca/in-the-studio-s1-apply"
+                href="https://bts.authenticallyou.ca/insiders-all-access-call-form"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-sans font-semibold bg-[#C9A86C] text-white px-8 py-3 rounded-full hover:bg-[#b8975b] transition-all soft-glow text-center"
               >
-                Join Premium
+                Apply — Premium
               </a>
             </motion.div>
+
           </div>
 
           {/* Back link */}
