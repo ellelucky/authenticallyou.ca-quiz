@@ -290,10 +290,11 @@ export default function ApplyPage() {
               <ul className="space-y-3 mb-8 flex-grow">
                 {[
                   "🔥 Biweekly 1:1 with Elfina — internal + external, wherever you need to go",
-                  "Uncover blocks, blind spots + resistance holding you back on camera",
-                  "Healing sessions to disintegrate what's keeping you hidden",
+                  "My Full Creator Studio Suite — all the tools to make content creation effortless",
+                  "2 video audits/month reviewed as if they were my own — hooks, story + CTA",
+                  "Find your winning hook — the same process I used to test 80 and build my VSL",
+                  "Your unique filming style, vibe + personal brand — so you stand out every time you post",
                   "Full access to the entire Authentically You ecosystem",
-                  "Your personal brand, filming + content system built around the real you",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3 font-sans text-sm text-[#3D3D3D]">
                     <span className="text-[#C9A86C] mt-0.5 shrink-0">✓</span>
@@ -323,7 +324,7 @@ export default function ApplyPage() {
               <ul className="space-y-3 mb-8 flex-grow">
                 {[
                   "Everything in Standard",
-                  "💎 Weekly 1:1 intensity — for clients who need deeper, faster support",
+                  "💎 Weekly 1:1 — for clients ready to Elevate",
                   "Personal WhatsApp — direct access to Elfina between sessions",
                   "I'll build your roadmap how I built mine: for max efficiency + unstoppable growth",
                   "Potential Podcast guest appearance — claim your voice publicly",
