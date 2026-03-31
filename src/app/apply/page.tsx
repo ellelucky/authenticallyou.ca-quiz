@@ -348,13 +348,13 @@ export default function ApplyPage() {
 
           {/* Inline mini testimonial near CTA */}
           <div className="flex items-start gap-4 bg-white/40 rounded-2xl px-6 py-5 border border-white/60 mb-12">
-            <img src="/review-profiles/kat.jpg" alt="Kat Oakley" className="w-10 h-10 rounded-full object-cover border-2 border-white/80 shrink-0 mt-0.5" />
+            <img src="/review-profiles/nick gibson.jpeg" alt="Nick Gibson" className="w-10 h-10 rounded-full object-cover border-2 border-white/80 shrink-0 mt-0.5" />
             <div>
               <Stars size="w-3 h-3" />
               <p className="font-serif text-sm italic text-[#3D3D3D] leading-relaxed mt-1.5">
-                &ldquo;I filmed multiple videos off the cuff, had direct eyeline, AND were the REAL me. I am relaxed, present, and authentically me.&rdquo;
+                &ldquo;Even though I went in wondering &lsquo;Will this work for me?&rsquo;, I came out with a clear picture of how I should move forward, and feeling absolutely amazing.&rdquo;
               </p>
-              <p className="font-sans text-xs text-[#6B6B6B] mt-1.5">— Kat Oakley, Content Creator</p>
+              <p className="font-sans text-xs text-[#6B6B6B] mt-1.5">— Nick Gibson, Business Owner</p>
             </div>
           </div>
 
