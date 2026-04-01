@@ -694,9 +694,9 @@ export default function QuizPage() {
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#FFF8F0]/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <span className="font-script text-4xl md:text-6xl text-[#3D3D3D]">
+            <a href="https://authenticallyou.ca" className="font-script text-4xl md:text-6xl text-[#3D3D3D] hover:opacity-75 transition-opacity">
               Authentically You
-            </span>
+            </a>
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
@@ -859,9 +859,9 @@ export default function QuizPage() {
 
         <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#FFF8F0]/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <span className="font-script text-4xl md:text-6xl text-[#3D3D3D]">
+            <a href="https://authenticallyou.ca" className="font-script text-4xl md:text-6xl text-[#3D3D3D] hover:opacity-75 transition-opacity">
               Authentically You
-            </span>
+            </a>
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
@@ -971,9 +971,9 @@ export default function QuizPage() {
         {/* Header */}
         <header className="fixed top-0 left-0 right-0 z-50 py-4 px-6 bg-[#FFF8F0]/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <span className="font-script text-4xl md:text-6xl text-[#3D3D3D]">
+            <a href="https://authenticallyou.ca" className="font-script text-4xl md:text-6xl text-[#3D3D3D] hover:opacity-75 transition-opacity">
               Authentically You
-            </span>
+            </a>
             <nav className="flex items-center gap-3 md:gap-5">
               <a
                 href="https://reflections.authenticallyou.ca" target="_blank" rel="noopener noreferrer"
