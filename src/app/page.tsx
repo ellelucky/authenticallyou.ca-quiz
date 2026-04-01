@@ -1131,9 +1131,9 @@ export default function QuizPage() {
                   description: "The full Creative Compass experience + weekly live calls with Elfina",
                   features: [
                     "💎 Creative Compass — unlimited access, film anything in under 10 minutes",
-                    "My full Creator Studio Suite — the tools to make content creation effortless",
                     "Weekly live calls with Elfina → get unstuck, gain clarity + keep moving forward",
                     "5 Videos in 5 Days: a complete framework — shorts, long-form, VSLs + course videos",
+                    "288 Confidence Prompts: 1 minute a day, get the prompt, hit record, answer, post, done!",
                     "Everything in Premium + bonus access to industry pros",
                     "💝 Annual bonus: Hidden Blocks Clarity Session with Elfina ($500 value)",
                   ],
