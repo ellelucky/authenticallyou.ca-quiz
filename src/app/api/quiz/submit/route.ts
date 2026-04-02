@@ -11,6 +11,7 @@ async function fireGHLWebhook(payload: {
   patterns: string[];
   support: string;
   styleInsights: string[];
+  answers: Record<number, string[]>;
 }) {
   const webhookUrl = process.env.GHL_WEBHOOK_URL;
   if (!webhookUrl) return;
@@ -34,6 +35,16 @@ async function fireGHLWebhook(payload: {
     // Tag for GHL automation branching
     tags: [`Quiz: ${payload.zone}`],
     source: 'Camera Confidence Zone Quiz',
+    // Individual answers for nurture workflow branching
+    q3_how_long:    payload.answers[3]?.[0]  || '',
+    q4_relationship:payload.answers[4]?.[0]  || '',
+    q9_playback:    payload.answers[9]?.[0]  || '',
+    q10_performing: payload.answers[10]?.[0] || '',
+    q20_consistency:payload.answers[20]?.[0] || '',
+    q21_situation:  payload.answers[21]?.[0] || '',
+    q22_fear:       payload.answers[22]?.[0] || '',
+    q25_unstuck:    payload.answers[25]?.[0] || '',
+    q27_duration:   payload.answers[27]?.[0] || '',
   };
 
   try {
@@ -233,6 +244,7 @@ export async function POST(request: NextRequest) {
           patterns: results.patterns || [],
           support: results.support,
           styleInsights: styleInsights || [],
+          answers,
         }),
         fireGHLNurtureWebhook({
           name: name || '',
