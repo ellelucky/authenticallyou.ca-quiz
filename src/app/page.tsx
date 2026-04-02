@@ -114,6 +114,18 @@ const TESTIMONIALS = [
     image: "/review-profiles/iris image.jpg",
   },
   {
+    name: "Åsa Strahlemo",
+    quote: "If somebody told me 2 weeks ago that I would create a VSL, publish it on my Skool page AND win the highest prize in a video challenge, I would have thought it was a cruel joke. But something actually worked this time. You turned my nightmare into a daydream.",
+    stars: 5,
+    image: "/review-profiles/Asa.jpeg",
+  },
+  {
+    name: "Vanessa Choi",
+    quote: "This 3-day challenge was a great way to take action. I found a filming style that suited me, gained the confidence to finally record, and by the end of the challenge, I had a video ready to post.",
+    stars: 5,
+    image: "/review-profiles/vanessa.png",
+  },
+  {
     name: "NDB",
     quote: "I had the honor of spending two whole hours with Elfina. Going in, I had no expectations and didn't even realize where my real problems lay. I've been in finance for nearly 10 years — a decade of constant hustle, intense focus, and overwhelming responsibility. The weight of it all was overwhelming. I carried so much on my shoulders that I fell into a mild depression, lost the ability to truly feel, and became disconnected from the real world. But in those two hours with Elfina, something shifted. I started becoming conscious again. I began to feel joy and even discovered a safe space within myself. Now, whenever life feels dark and cold, I know exactly where to go. That safe place was there all along, right by my side. I'm incredibly grateful and deeply moved by this experience. From the bottom of my heart, I highly recommend that you find yourself again.",
     stars: 5,

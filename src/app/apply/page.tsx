@@ -230,6 +230,18 @@ export default function ApplyPage() {
                   image: "/review-profiles/angela journaling mentor.png",
                   quote: "I joined Authentically You this week and I am so in love with all the encouragement and tons of information inside her classroom. If you need to show up on camera in business — this is the place to be.",
                 },
+                {
+                  name: "Åsa Strahlemo",
+                  label: "Community Member",
+                  image: "/review-profiles/Asa.jpeg",
+                  quote: "If somebody told me 2 weeks ago that I would create a VSL, publish it on my Skool page AND win the highest prize in a video challenge, I would have thought it was a cruel joke. But something actually worked this time. You turned my nightmare into a daydream.",
+                },
+                {
+                  name: "Vanessa Choi",
+                  label: "Make Marketing Yours",
+                  image: "/review-profiles/vanessa.png",
+                  quote: "This 3-day challenge was a great way to take action. I found a filming style that suited me, gained the confidence to finally record, and by the end of the challenge, I had a video ready to post.",
+                },
               ].map((t, i) => (
                 <motion.div
                   key={t.name}
