@@ -97,8 +97,7 @@ async function fireGHLNurtureWebhook(payload: {
   zone: string;
   answers: Record<number, string[]>;
 }) {
-  const webhookUrl = process.env.GHL_NURTURE_WEBHOOK_URL;
-  if (!webhookUrl) return;
+  const webhookUrl = process.env.GHL_NURTURE_WEBHOOK_URL || 'https://services.leadconnectorhq.com/hooks/zCDGNUc4qtjGVPvy3vcG/webhook-trigger/a43832fa-8581-4007-8e79-07989bd62cd2';
 
   const nameParts = payload.name.trim().split(' ');
   const firstName = nameParts[0] || '';
