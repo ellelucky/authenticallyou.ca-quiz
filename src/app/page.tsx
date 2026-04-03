@@ -578,6 +578,7 @@ export default function QuizPage() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
+  const [consentChecked, setConsentChecked] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [studioTier, setStudioTier] = useState<"standard" | "premium" | "vip">("premium");
   const [expandedTestimonial, setExpandedTestimonial] = useState<number | null>(null);
@@ -863,7 +864,7 @@ export default function QuizPage() {
   }
 
   if (showContactForm) {
-    const canSubmit = userName.trim().length > 0 && userEmail.trim().length > 0 && userPhone.trim().length > 0;
+    const canSubmit = userName.trim().length > 0 && userEmail.trim().length > 0 && userPhone.trim().length > 0 && consentChecked;
     return (
       <div className="calm-gradient-radial min-h-screen text-[#3D3D3D] relative">
         <AuroraBackground />
@@ -952,6 +953,33 @@ export default function QuizPage() {
                     className="w-full px-5 py-3 rounded-2xl border-2 border-[#3D3D3D]/10 bg-white/70 font-sans text-sm text-[#3D3D3D] placeholder:text-[#6B6B6B]/40 focus:outline-none focus:border-[#C9A86C] transition-all"
                   />
                 </div>
+                {/* Consent checkbox */}
+                <label className="flex items-start gap-3 cursor-pointer group">
+                  <div className="relative mt-0.5 shrink-0">
+                    <input
+                      type="checkbox"
+                      checked={consentChecked}
+                      onChange={(e) => setConsentChecked(e.target.checked)}
+                      className="sr-only"
+                    />
+                    <div
+                      className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all ${
+                        consentChecked
+                          ? "bg-[#C9A86C] border-[#C9A86C]"
+                          : "border-[#3D3D3D]/20 bg-white/70 group-hover:border-[#C9A86C]/50"
+                      }`}
+                    >
+                      {consentChecked && <Check className="w-3 h-3 text-white" />}
+                    </div>
+                  </div>
+                  <span className="font-sans text-xs text-[#6B6B6B] leading-relaxed">
+                    I agree to receive personalised emails from Elfina Luk / Authentically You based on my quiz results. I have read and accept the{" "}
+                    <a href="https://bts.authenticallyou.ca/terms" target="_blank" rel="noopener noreferrer" className="text-[#C9A86C] underline underline-offset-2 hover:text-[#b8975b]">Terms</a>
+                    {" "}and{" "}
+                    <a href="https://bts.authenticallyou.ca/policy" target="_blank" rel="noopener noreferrer" className="text-[#C9A86C] underline underline-offset-2 hover:text-[#b8975b]">Privacy Policy</a>.
+                  </span>
+                </label>
+
                 <button
                   onClick={submitContactAndResults}
                   disabled={!canSubmit || isSaving}
